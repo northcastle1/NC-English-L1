@@ -3,308 +3,270 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Northcastle | Grammar Mastery</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Mastering Parts of Speech | Northcastle Grammar</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --maroon: #500b0b;
-            --gold: #D4AF37;
+            --maroon: #4a0404;
+            --gold: #d4af37;
             --white: #ffffff;
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
             background-color: var(--maroon);
             color: var(--white);
-            user-select: none; /* Protection: Disable Selection */
+            font-family: 'Inter', sans-serif;
+            user-select: none; /* Disable text selection */
             -webkit-user-select: none;
-            overflow-x: hidden;
+            -moz-user-select: none;
+            -ms-user-select: none;
         }
 
-        /* Protection: Print */
-        @media print {
-            body { display: none !important; }
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--gold);
         }
 
-        /* Image Styling & Zoom */
-        .img-container {
-            position: relative;
-            overflow: hidden;
-            border: 3px solid var(--gold);
-            border-radius: 1.5rem;
-            background-color: #3d0808; /* Fallback color */
-        }
-        .img-container img {
-            transition: transform 0.5s ease;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .img-container:hover img {
-            transform: scale(1.1);
+        .gold-border {
+            border: 4px solid var(--gold);
         }
 
-        /* Gold Accents */
-        .gold-border { border: 2px solid var(--gold); }
-        .gold-text { color: var(--gold); }
-        .gold-bg { background-color: var(--gold); }
+        .hover-zoom {
+            transition: transform 0.3s ease-in-out;
+        }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--maroon); }
-        ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
+        .hover-zoom:hover {
+            transform: scale(1.05);
+        }
 
-        /* Quiz Styling */
-        .quiz-option {
-            background: transparent;
-            border: 1px solid var(--gold);
-            padding: 1rem;
-            border-radius: 0.75rem;
+        .btn-gold {
+            background-color: var(--gold);
+            color: var(--maroon);
+            font-weight: bold;
             transition: all 0.3s ease;
-            cursor: pointer;
-            text-align: left;
         }
-        .quiz-option:hover {
-            background: rgba(212, 175, 55, 0.2);
+
+        .btn-gold:hover {
+            background-color: #f1c40f;
+            transform: translateY(-2px);
         }
-        .correct { background: #10b981 !important; border-color: #10b981 !important; }
-        .wrong { background: #ef4444 !important; border-color: #ef4444 !important; }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 4px solid var(--gold);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        @media print {
+            body { display: none; } /* Disable printing */
+        }
     </style>
 </head>
-<body oncontextmenu="return false;"> <nav class="fixed top-0 w-full z-50 bg-[#500b0b]/90 backdrop-blur-md border-b border-[#D4AF37]/30">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <div class="text-2xl font-bold tracking-tighter">
-                NORTH<span class="gold-text">CASTLE</span>
-            </div>
-            <div class="hidden md:flex space-x-8 text-sm font-medium uppercase tracking-widest">
-                <a href="#intro" class="hover:text-[#D4AF37] transition">Introduction</a>
-                <a href="#parts" class="hover:text-[#D4AF37] transition">Parts of Speech</a>
-                <a href="#quiz" class="hover:text-[#D4AF37] transition">Knowledge Check</a>
-            </div>
+<body oncontextmenu="return false;"> <header class="min-h-screen flex flex-col items-center justify-center text-center p-6" data-aos="fade-down">
+        <h1 class="text-6xl md:text-8xl mb-4">Northcastle</h1>
+        <h2 class="text-2xl md:text-4xl uppercase tracking-widest mb-8">Grammar: Parts of Speech</h2>
+        <p class="max-w-2xl text-lg opacity-90">
+            Understanding parts of speech is essential for determining the correct definition of a word when using the dictionary.
+        </p>
+        <div class="mt-12 animate-bounce">
+            <svg class="w-10 h-10 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
         </div>
-    </nav>
+    </header>
 
-    <section id="intro" class="pt-40 pb-20 px-6">
-        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-            <div data-aos="fade-right">
-                <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-6">
-                    Grammar <br><span class="gold-text">Essentials</span>
-                </h1>
-                <p class="text-lg opacity-90 leading-relaxed mb-8">
-                    Understanding parts of speech is essential for determining the correct definition of a word when using the dictionary. Master the eight foundational elements of the English language.
-                </p>
-                <div class="flex space-x-4">
-                    <span class="px-6 py-3 gold-bg text-[#500b0b] font-bold rounded-full">Start Lesson</span>
-                </div>
-            </div>
-            <div data-aos="zoom-in" class="img-container aspect-video">
-                <img src="https://source.unsplash.com/featured/?english,library,books" alt="Library">
-            </div>
-        </div>
-    </section>
+    <main class="container mx-auto px-6 py-12">
+        
+        <section class="mb-20 text-center" data-aos="fade-up">
+            <img src="https://image.pollinations.ai/prompt/a-majestic-ancient-library-interior-with-gold-accents-organized-books-modest-environment-no-people?width=800&height=500&nologo=true" alt="Grammar Intro" class="mx-auto rounded-lg gold-border hover-zoom shadow-2xl mb-8">
+            <p class="text-xl italic">There are eight parts of speech in English: nouns, pronouns, verbs, adjectives, adverbs, prepositions, conjunctions, and interjections.</p>
+        </section>
 
-    <section id="parts" class="py-24 bg-black/10">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-4xl font-bold mb-4">The Eight Parts of Speech</h2>
-                <div class="w-24 h-1 gold-bg mx-auto"></div>
+        <section class="mb-24 grid md:grid-cols-2 gap-12 items-center" data-aos="fade-right">
+            <div>
+                <h3 class="text-4xl mb-4">1. Noun</h3>
+                <p class="text-lg mb-4">A noun is the name of a person, place, thing, or idea. Nouns can be singular or plural.</p>
+                <div class="card">
+                    <p><strong>Examples:</strong> John, Cairo, Happiness</p>
+                    <ul class="list-disc ml-5 mt-2">
+                        <li>John lives in Cairo.</li>
+                        <li>The girl is beautiful.</li>
+                    </ul>
+                </div>
             </div>
+            <img src="https://image.pollinations.ai/prompt/a-beautiful-panoramic-view-of-Cairo-city-landmarks-modest-respectful-scenery?width=800&height=500&nologo=true" class="rounded-lg gold-border hover-zoom shadow-xl">
+        </section>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="p-8 rounded-3xl border border-[#D4AF37]/20 bg-white/5 hover:border-[#D4AF37] transition-all" data-aos="fade-up" data-aos-delay="100">
-                    <div class="text-gold font-bold text-xl mb-4">01. Noun</div>
-                    <p class="text-sm opacity-80 mb-4">A noun is the name of a person, place, thing, or idea. Nouns can be singular or plural.</p>
-                    <p class="text-xs gold-text italic">Ex: John, Cairo, Happiness</p>
-                </div>
-                <div class="p-8 rounded-3xl border border-[#D4AF37]/20 bg-white/5 hover:border-[#D4AF37] transition-all" data-aos="fade-up" data-aos-delay="200">
-                    <div class="text-gold font-bold text-xl mb-4">02. Pronoun</div>
-                    <p class="text-sm opacity-80 mb-4">A pronoun is a word used in place of a noun to avoid repetition.</p>
-                    <p class="text-xs gold-text italic">Ex: She, we, they, it, He</p>
-                </div>
-                <div class="p-8 rounded-3xl border border-[#D4AF37]/20 bg-white/5 hover:border-[#D4AF37] transition-all" data-aos="fade-up" data-aos-delay="300">
-                    <div class="text-gold font-bold text-xl mb-4">03. Verb</div>
-                    <p class="text-sm opacity-80 mb-4">A verb expresses action or being. It is the heart of every sentence.</p>
-                    <p class="text-xs gold-text italic">Ex: play, jump, write, is</p>
-                </div>
-                <div class="p-8 rounded-3xl border border-[#D4AF37]/20 bg-white/5 hover:border-[#D4AF37] transition-all" data-aos="fade-up" data-aos-delay="400">
-                    <div class="text-gold font-bold text-xl mb-4">04. Adjective</div>
-                    <p class="text-sm opacity-80 mb-4">An adjective modifies or describes a noun or pronoun.</p>
-                    <p class="text-xs gold-text italic">Ex: pretty, old, big, smart</p>
+        <section class="mb-24 grid md:grid-cols-2 gap-12 items-center" data-aos="fade-left">
+            <div class="md:order-2">
+                <h3 class="text-4xl mb-4">2. Pronoun</h3>
+                <p class="text-lg mb-4">A pronoun is a word used in place of a noun.</p>
+                <div class="card">
+                    <p><strong>Examples:</strong> She, we, they, it, He</p>
+                    <ul class="list-disc ml-5 mt-2">
+                        <li>John lives in Cairo. <strong>He</strong> is 12 years old.</li>
+                        <li>The girl is beautiful. <strong>She</strong> has long hair.</li>
+                    </ul>
                 </div>
             </div>
-        </div>
-    </section>
+            <img src="https://image.pollinations.ai/prompt/a-group-of-diverse-friends-talking-respectfully-women-wearing-hijab-modest-clothing-happy-atmosphere?width=800&height=500&nologo=true" class="rounded-lg gold-border hover-zoom shadow-xl md:order-1">
+        </section>
 
-    <section class="py-24 px-6 space-y-32">
-        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-            <div data-aos="fade-right" class="order-2 md:order-1">
-                <div class="img-container aspect-square">
-                    <img src="https://source.unsplash.com/featured/?muslim,modest,student" alt="Modest Student">
+        <section class="mb-24 grid md:grid-cols-2 gap-12 items-center" data-aos="fade-right">
+            <div>
+                <h3 class="text-4xl mb-4">3. Verb</h3>
+                <p class="text-lg mb-4">A verb expresses action or being.</p>
+                <div class="card">
+                    <p><strong>Examples:</strong> play, jump, write, is</p>
+                    <ul class="list-disc ml-5 mt-2">
+                        <li>John <strong>lives</strong> in Cairo.</li>
+                        <li>The girl <strong>is</strong> beautiful.</li>
+                        <li>He <strong>wrote</strong> a letter.</li>
+                    </ul>
                 </div>
             </div>
-            <div data-aos="fade-left" class="order-1 md:order-2">
-                <h3 class="text-3xl font-bold mb-6 gold-text">05. Adverbs</h3>
-                <p class="text-lg opacity-90 leading-relaxed mb-6">
-                    An adverb modifies or describes a verb, an adjective, or another adverb. It often answers how, when, or where.
-                </p>
-                <div class="p-6 bg-black/20 rounded-2xl border-l-4 border-[#D4AF37]">
-                    <p class="italic">"He walked <strong>slowly</strong>."</p>
-                    <p class="italic">"The girl is <strong>very</strong> beautiful."</p>
+            <img src="https://image.pollinations.ai/prompt/a-fountain-pen-writing-on-elegant-parchment-paper-gold-ink-modest-artistic-setup?width=800&height=500&nologo=true" class="rounded-lg gold-border hover-zoom shadow-xl">
+        </section>
+
+        <section class="mb-24" data-aos="zoom-in">
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="card">
+                    <h3 class="text-3xl mb-4">4. Adjective</h3>
+                    <p>Modifies or describes a noun or pronoun.</p>
+                    <p class="mt-2 font-semibold">Examples: pretty, old, big, smart</p>
+                    <p class="italic mt-2">"He is a <strong>smart</strong> boy."</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-3xl mb-4">5. Adverb</h3>
+                    <p>Modifies a verb, adjective, or another adverb.</p>
+                    <p class="mt-2 font-semibold">Examples: quickly, slowly, very</p>
+                    <p class="italic mt-2">"He walked <strong>slowly</strong>."</p>
                 </div>
             </div>
-        </div>
+            <img src="https://image.pollinations.ai/prompt/a-smart-student-studying-with-books-modest-hijab-respectful-no-hair-showing-for-women-warm-lighting?width=800&height=500&nologo=true" class="w-full mt-8 rounded-lg gold-border hover-zoom shadow-xl">
+        </section>
 
-        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-            <div data-aos="fade-right">
-                <h3 class="text-3xl font-bold mb-6 gold-text">Structural Connections</h3>
-                <div class="space-y-8">
-                    <div>
-                        <h4 class="font-bold text-xl mb-2">06. Prepositions</h4>
-                        <p class="opacity-80">Prepositions tell you the relationships between other words in a sentence.</p>
-                        <p class="text-sm gold-text mt-1 italic">Ex: John lives <strong>in</strong> Cairo.</p>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-xl mb-2">07. Conjunctions</h4>
-                        <p class="opacity-80">A conjunction joins words, phrases, or clauses together.</p>
-                        <p class="text-sm gold-text mt-1 italic">Ex: Sara <strong>and</strong> Nancy are good friends.</p>
-                    </div>
-                </div>
-            </div>
-            <div data-aos="fade-left">
-                <div class="img-container aspect-video">
-                    <img src="https://source.unsplash.com/featured/?architecture,mosque,cairo" alt="Cairo Architecture">
-                </div>
-            </div>
-        </div>
-
-        <div class="max-w-6xl mx-auto text-center" data-aos="zoom-in">
-            <h3 class="text-3xl font-bold mb-6 gold-text">08. Interjections</h3>
-            <p class="text-xl max-w-2xl mx-auto opacity-90 mb-10">
-                An interjection is a word used to express emotion. It is often followed by an exclamation point to show strong feeling.
-            </p>
-            <div class="flex justify-center space-x-8 text-4xl font-bold">
-                <span class="hover:scale-110 transition cursor-default">Wow!</span>
-                <span class="hover:scale-110 transition cursor-default">Oh!</span>
-                <span class="hover:scale-110 transition cursor-default">Oops!</span>
-            </div>
-        </div>
-    </section>
-
-    <section id="quiz" class="py-24 px-6 bg-black/20">
-        <div class="max-w-3xl mx-auto" data-aos="fade-up">
-            <div class="text-center mb-12">
-                <h2 class="text-4xl font-bold mb-4">Mastery Quiz</h2>
-                <p class="opacity-70">Complete all 10 questions to test your knowledge.</p>
-            </div>
-
-            <div id="quiz-box" class="bg-[#3d0808] p-8 md:p-12 rounded-3xl border border-[#D4AF37]/30 shadow-2xl">
-                <div id="question-container">
-                    <div class="flex justify-between items-center mb-8">
-                        <span id="q-number" class="gold-text font-bold">Question 1/10</span>
-                        <span id="score-display" class="text-sm opacity-60">Score: 0</span>
-                    </div>
-                    <h3 id="q-text" class="text-2xl font-semibold mb-8">Identify the noun in: "John lives in Cairo."</h3>
-                    <div id="options" class="grid gap-4">
-                        </div>
+        <section class="mb-24 grid md:grid-cols-2 gap-12 items-center" data-aos="fade-up">
+            <div>
+                <h3 class="text-4xl mb-4">6. Preposition</h3>
+                <p class="mb-6">Tells relationships between words.</p>
+                <div class="card mb-8">
+                    <p><strong>Examples:</strong> in, on, at, by, with</p>
+                    <p class="italic">"John lives <strong>in</strong> Cairo."</p>
                 </div>
 
-                <div id="result-container" class="hidden text-center">
-                    <h3 class="text-3xl font-bold mb-4 gold-text">Lesson Complete!</h3>
-                    <p id="final-score" class="text-xl mb-8"></p>
-                    <button onclick="location.reload()" class="gold-bg text-[#500b0b] px-10 py-3 rounded-full font-bold hover:scale-105 transition">Restart Lesson</button>
+                <h3 class="text-4xl mb-4">7. Conjunction</h3>
+                <p class="mb-6">Joins words, phrases, or clauses.</p>
+                <div class="card">
+                    <p><strong>Examples:</strong> and, but, or, while, because</p>
+                    <p class="italic">"Sara <strong>and</strong> Nancy are good friends."</p>
                 </div>
             </div>
-        </div>
-    </section>
+            <img src="https://image.pollinations.ai/prompt/two-sisters-walking-together-in-a-park-modest-hijab-respectful-no-hair-showing-for-women-bright-day?width=800&height=500&nologo=true" class="rounded-lg gold-border hover-zoom shadow-xl">
+        </section>
 
-    <footer class="py-12 text-center opacity-40 text-sm border-t border-white/10">
-        <p>&copy; 2026 NORTHCASTLE Grammar Academy. Educational Use Only.</p>
+        <section class="mb-24 text-center" data-aos="flip-up">
+            <h3 class="text-4xl mb-4">8. Interjection</h3>
+            <p class="text-lg mb-6">A word used to express emotion. Often followed by an exclamation point!</p>
+            <div class="card max-w-xl mx-auto">
+                <p class="text-2xl font-bold mb-4">Wow! - Oh! - Oops!</p>
+                <p>"<strong>Wow!</strong> I like your dress."</p>
+            </div>
+            <img src="https://image.pollinations.ai/prompt/a-beautiful-modest-dress-on-a-display-elegant-gold-details-no-person-respectful-setting?width=800&height=500&nologo=true" class="mt-8 mx-auto rounded-lg gold-border hover-zoom shadow-xl">
+        </section>
+
+        <hr class="border-gold opacity-30 my-20">
+
+        <section id="quiz-section" class="py-12" data-aos="fade-up">
+            <h2 class="text-5xl text-center mb-12">Interactive Quiz</h2>
+            <div id="quiz-container" class="max-w-3xl mx-auto bg-white/10 p-8 rounded-xl gold-border">
+                </div>
+            <div id="quiz-results" class="hidden max-w-3xl mx-auto text-center mt-8 p-8 bg-gold text-maroon rounded-xl font-bold text-2xl">
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="py-10 text-center opacity-60 text-sm">
+        &copy; 2024 Northcastle Educational Design. All rights reserved.
     </footer>
 
     <script>
-        // Init AOS
+        // Initialize AOS
         AOS.init({ duration: 1000, once: true });
 
-        // Security: Disable Copy & Selection
-        document.addEventListener('copy', (e) => e.preventDefault());
-        document.addEventListener('keydown', (e) => {
-            if (e.ctrlKey && (e.key === 'c' || e.key === 'u' || e.key === 'p')) {
+        // Quiz Data
+        const quizData = [
+            { q: "Which part of speech names a person, place, or thing?", a: ["Verb", "Noun", "Adjective", "Adverb"], c: 1 },
+            { q: "Identify the pronoun: 'She has long hair.'", a: ["long", "hair", "She", "has"], c: 2 },
+            { q: "In 'John lives in Cairo', what is 'lives'?", a: ["Noun", "Verb", "Preposition", "Adjective"], c: 1 },
+            { q: "Which word is an adjective: 'The smart boy wrote a letter.'", a: ["smart", "boy", "wrote", "letter"], c: 0 },
+            { q: "What is the adverb in: 'He walked slowly.'?", a: ["He", "walked", "slowly", "None"], c: 2 },
+            { q: "In the sentence 'John is in Cairo', 'in' is a:", a: ["Conjunction", "Verb", "Preposition", "Noun"], c: 2 },
+            { q: "Choose the conjunction:", a: ["Wow", "Under", "And", "Singular"], c: 2 },
+            { q: "Which part of speech expresses strong emotion?", a: ["Interjection", "Adverb", "Noun", "Pronoun"], c: 0 },
+            { q: "What does an adjective modify?", a: ["Verbs", "Nouns/Pronouns", "Adverbs", "Prepositions"], c: 1 },
+            { q: "In 'The girl is beautiful', 'beautiful' is an:", a: ["Adverb", "Adjective", "Verb", "Pronoun"], c: 1 }
+        ];
+
+        function loadQuiz() {
+            const container = document.getElementById('quiz-container');
+            let html = '';
+            quizData.forEach((item, index) => {
+                html += `
+                    <div class="mb-8">
+                        <p class="text-xl font-semibold mb-4">${index + 1}. ${item.q}</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            ${item.a.map((opt, i) => `
+                                <button onclick="selectOption(${index}, ${i})" id="q${index}o${i}" class="quiz-opt border border-gold/50 p-3 rounded hover:bg-gold hover:text-maroon transition-all text-left">
+                                    ${opt}
+                                </button>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            });
+            html += `<button onclick="calculateScore()" class="btn-gold w-full py-4 rounded-lg mt-6 text-xl">Submit My Score</button>`;
+            container.innerHTML = html;
+        }
+
+        let userAnswers = {};
+
+        function selectOption(qIdx, oIdx) {
+            userAnswers[qIdx] = oIdx;
+            // Visual feedback
+            for (let i = 0; i < 4; i++) {
+                document.getElementById(`q${qIdx}o${i}`).style.backgroundColor = 'transparent';
+                document.getElementById(`q${qIdx}o${i}`).style.color = 'white';
+            }
+            document.getElementById(`q${qIdx}o${oIdx}`).style.backgroundColor = '#d4af37';
+            document.getElementById(`q${qIdx}o${oIdx}`).style.color = '#4a0404';
+        }
+
+        function calculateScore() {
+            let score = 0;
+            quizData.forEach((item, index) => {
+                if (userAnswers[index] === item.c) score++;
+            });
+            
+            const resultDiv = document.getElementById('quiz-results');
+            resultDiv.innerHTML = `You scored ${score} out of 10!<br>${score >= 7 ? "Excellent Work!" : "Keep practicing!"}`;
+            resultDiv.classList.remove('hidden');
+            resultDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Disable Print Shortcut
+        window.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && (e.key === 'p' || e.key === 's' || e.key === 'u')) {
                 e.preventDefault();
+                alert('Action restricted for content protection.');
             }
         });
 
-        // Quiz Data
-        const questions = [
-            { q: "What part of speech is 'Cairo'?", o: ["Verb", "Adverb", "Noun", "Pronoun"], a: 2 },
-            { q: "Identify the pronoun: 'He is 12 years old.'", o: ["He", "is", "12", "old"], a: 0 },
-            { q: "A verb expresses an action or a state of...", o: ["Mind", "Being", "Place", "Time"], a: 1 },
-            { q: "What describes a noun or pronoun?", o: ["Adverb", "Adjective", "Preposition", "Verb"], a: 1 },
-            { q: "In 'He walked slowly', 'slowly' is an:", o: ["Adjective", "Adverb", "Interjection", "Noun"], a: 1 },
-            { q: "Which of these is a preposition?", o: ["But", "In", "Wow", "She"], a: 1 },
-            { q: "Conjunctions are used to...", o: ["Show emotion", "Join words", "Name a person", "Describe a verb"], a: 1 },
-            { q: "Which part of speech is 'Wow!'?", o: ["Interjection", "Noun", "Conjunction", "Verb"], a: 0 },
-            { q: "Nouns can be plural or...", o: ["Singular", "Action", "Description", "Quiet"], a: 0 },
-            { q: "Why use parts of speech for dictionaries?", o: ["To read faster", "To find definitions", "To spell words", "To count letters"], a: 1 }
-        ];
-
-        let currentQ = 0;
-        let score = 0;
-        let canAnswer = true;
-
-        function loadQuestion() {
-            canAnswer = true;
-            const q = questions[currentQ];
-            document.getElementById('q-number').innerText = `Question ${currentQ + 1}/10`;
-            document.getElementById('q-text').innerText = q.q;
-            
-            const optionsDiv = document.getElementById('options');
-            optionsDiv.innerHTML = '';
-            
-            q.o.forEach((opt, index) => {
-                const btn = document.createElement('button');
-                btn.className = 'quiz-option';
-                btn.innerText = opt;
-                btn.onclick = () => checkAnswer(index, btn);
-                optionsDiv.appendChild(btn);
-            });
-        }
-
-        function checkAnswer(idx, btn) {
-            if (!canAnswer) return;
-            canAnswer = false;
-            
-            const correct = questions[currentQ].a;
-            if (idx === correct) {
-                btn.classList.add('correct');
-                score++;
-                document.getElementById('score-display').innerText = `Score: ${score}`;
-            } else {
-                btn.classList.add('wrong');
-                document.querySelectorAll('.quiz-option')[correct].classList.add('correct');
-            }
-
-            setTimeout(() => {
-                currentQ++;
-                if (currentQ < questions.length) {
-                    loadQuestion();
-                } else {
-                    showResults();
-                }
-            }, 1500);
-        }
-
-        function showResults() {
-            document.getElementById('question-container').classList.add('hidden');
-            document.getElementById('result-container').classList.remove('hidden');
-            document.getElementById('final-score').innerText = `You correctly answered ${score} out of 10 questions.`;
-        }
-
-        loadQuestion();
+        loadQuiz();
     </script>
 </body>
 </html>
