@@ -3,275 +3,299 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>North Castle | Module 1: Street Sounds</title>
+    <title>Street English: Alphabet & Street Sounds</title>
     
-    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
         :root {
             --maroon: #500b0b;
             --gold: #D4AF37;
             --white: #ffffff;
+            --dark-maroon: #3a0808;
+            --success: #28a745;
+            --error: #dc3545;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none; /* Security: Disable text selection */
+            -webkit-user-select: none;
         }
 
         body {
             font-family: 'Poppins', sans-serif;
             background-color: var(--maroon);
             color: var(--white);
+            line-height: 1.6;
             overflow-x: hidden;
-            user-select: none; /* Disable text selection */
         }
 
-        /* Security: Hide content on print */
-        @media print {
-            body { display: none !important; }
+        /* Header Section */
+        header {
+            height: 60vh;
+            background: linear-gradient(rgba(80, 11, 11, 0.8), rgba(80, 11, 11, 0.8)), 
+                        url('https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-bottom: 5px solid var(--gold);
         }
 
-        .gold-border { border: 2px solid var(--gold); }
-        .gold-text { color: var(--gold); }
-        .gold-bg { background-color: var(--gold); }
-
-        .card-hover {
-            transition: transform 0.3s ease, border-color 0.3s ease;
+        .logo-text {
+            font-weight: 700;
+            font-size: 3rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
-        .card-hover:hover {
-            transform: scale(1.05);
-            border: 2px solid var(--gold);
+        /* Content Sections */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
         }
 
-        .img-zoom {
-            overflow: hidden;
-            border-radius: 8px;
+        .section-title {
+            color: var(--gold);
+            font-size: 2rem;
+            margin-bottom: 30px;
+            text-align: center;
+            text-transform: uppercase;
+            border-bottom: 2px solid var(--gold);
+            display: inline-block;
+            padding-bottom: 5px;
         }
 
-        .img-zoom img {
-            transition: transform 0.5s ease;
+        .card {
+            background: var(--dark-maroon);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            border-left: 5px solid var(--gold);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
-        .img-zoom:hover img {
-            transform: scale(1.1);
+        /* Street Sounds Content */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
         }
 
-        /* Quiz Styles */
-        .quiz-option {
-            background: rgba(255, 255, 255, 0.1);
-            transition: all 0.2s;
-            cursor: pointer;
+        .sound-box {
+            background: rgba(212, 175, 55, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
         }
 
-        .quiz-option.correct { background-color: #10b981 !important; border-color: #059669; }
-        .quiz-option.wrong { background-color: #ef4444 !important; border-color: #dc2626; }
+        .sound-box h3 { color: var(--gold); margin-bottom: 10px; }
 
-        .btn-gold {
-            background-color: var(--gold);
+        /* Visual Dictionary */
+        .dictionary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .word-card {
+            background: var(--white);
             color: var(--maroon);
-            font-weight: bold;
-            padding: 10px 25px;
-            border-radius: 5px;
-            transition: all 0.3s;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
         }
 
-        .btn-gold:hover {
-            background-color: #fff;
-            transform: translateY(-2px);
+        .word-card:hover { transform: translateY(-5px); }
+
+        .word-card img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        /* Quiz Styling */
+        .quiz-container {
+            background: var(--white);
+            color: var(--maroon);
+            padding: 40px;
+            border-radius: 20px;
+        }
+
+        .question { margin-bottom: 25px; display: none; }
+        .question.active { display: block; }
+        
+        .option-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: 2px solid var(--maroon);
+            background: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .option-btn:hover { background: #f0f0f0; }
+        .correct { background: var(--success) !important; color: white; border-color: var(--success); }
+        .wrong { background: var(--error) !important; color: white; border-color: var(--error); }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .comparison-grid { grid-template-columns: 1fr; }
+            .logo-text { font-size: 2rem; }
         }
     </style>
 </head>
-<body oncontextmenu="return false;"> <header class="py-10 text-center border-b border-yellow-700/30" data-aos="fade-down">
-        <h1 class="text-4xl md:text-6xl font-700 gold-text tracking-widest">NORTH CASTLE</h1>
-        <p class="text-xl mt-2 italic text-gray-300">Module 1: Lecture 1 - Alphabet & Street Sounds</p>
+<body oncontextmenu="return false;"> <header>
+        <div data-aos="zoom-in">
+            <p style="color: var(--gold); font-weight: 600;">MODULE 1: LECTURE 1</p>
+            <h1 class="logo-text">Alphabet & Street Sounds</h1>
+            <p>Master the real English spoken on the streets.</p>
+        </div>
     </header>
 
-    <section class="container mx-auto px-6 py-16">
-        <div class="grid md:grid-cols-2 gap-12 items-center">
-            <div data-aos="fade-right">
-                <h2 class="text-3xl font-bold mb-6 gold-text">Letter Names vs. Street Sounds</h2>
-                <p class="text-lg leading-relaxed mb-4">
-                    In school, they taught you the <b>Alphabet Names</b> (A, B, C). In the street, we use <b>Street Sounds</b>. 
-                    A letter's name is just its ID card, but its sound is how it actually speaks to you.
-                </p>
-                <div class="bg-black/20 p-6 rounded-lg border-l-4 border-gold">
-                    <p class="italic text-gray-200">"The letter 'A' is named 'Ay', but in the street, it says 'Ah', 'Aa', or 'Uh'!"</p>
-                </div>
-            </div>
-            <div class="img-zoom gold-border" data-aos="fade-left">
-                <img src="https://image.pollinations.ai/prompt/Muslim-teacher-pointing-at-alphabet-board-Modest-clothing-Muslim-Hijab-respectful-no-hair-showing-for-women?width=800&height=500&nologo=true" alt="Street Sounds">
-            </div>
-        </div>
-    </section>
-
-    <hr class="border-yellow-700/20 my-10">
-
-    <section class="container mx-auto px-6 py-12">
-        <h2 class="text-4xl font-bold text-center mb-16 gold-text" data-aos="zoom-in">Street Secrets</h2>
+    <div class="container">
         
-        <div class="grid md:grid-cols-2 gap-8">
-            <div class="p-8 bg-black/30 rounded-xl card-hover" data-aos="flip-left">
-                <h3 class="text-2xl font-bold gold-text mb-4">The P vs B Battle</h3>
-                <img src="https://image.pollinations.ai/prompt/close-up-of-mouth-speaking-with-hand-in-front-of-lips-Modest-clothing-Muslim-Hijab-respectful-no-hair-showing-for-women?width=800&height=400&nologo=true" class="rounded mb-4 gold-border">
-                <p>Put your hand in front of your mouth. When you say <b>'P'</b>, you should feel a burst of air. When you say <b>'B'</b>, your throat vibrates but there is no wind! Don't call your <b>Barking</b> dog a <b>Parking</b> dog!</p>
-            </div>
-
-            <div class="p-8 bg-black/30 rounded-xl card-hover" data-aos="flip-right">
-                <h3 class="text-2xl font-bold gold-text mb-4">Short vs Long Vowels</h3>
-                <img src="https://image.pollinations.ai/prompt/a-group-of-respectful-students-laughing-modestly-Modest-clothing-Muslim-Hijab-respectful-no-hair-showing-for-women?width=800&height=400&nologo=true" class="rounded mb-4 gold-border">
-                <p>Short vowels are fast and punchy (Bit, Cut). Long vowels say their own name (Bite, Cute). In the street, getting these wrong changes the whole meaning of your story!</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="container mx-auto px-6 py-16">
-        <h2 class="text-4xl font-bold text-center mb-16 gold-text" data-aos="fade-up">Visual Street Dictionary</h2>
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-            <script>
-                const words = [
-                    "Speak", "Listen", "Sound", "Mouth", "Voice", 
-                    "Repeat", "Letter", "Word", "Vowel", "Tongue",
-                    "Breath", "Fast", "Slow", "Clear", "Loud"
-                ];
-                words.forEach(word => {
-                    document.write(`
-                        <div class="text-center card-hover bg-black/20 p-4 rounded-lg gold-border" data-aos="zoom-in">
-                            <img src="https://image.pollinations.ai/prompt/concept-of-${word}-Modest-clothing-Muslim-Hijab-respectful-no-hair-showing-for-women?width=200&height=200&nologo=true" class="w-full h-32 object-cover mb-2 rounded">
-                            <p class="font-bold gold-text">${word}</p>
-                        </div>
-                    `);
-                });
-            </script>
-        </div>
-    </section>
-
-    <section class="container mx-auto px-6 py-16 mb-20">
-        <div class="max-w-3xl mx-auto gold-border p-8 rounded-2xl bg-black/40" data-aos="fade-up">
-            <h2 class="text-3xl font-bold mb-8 gold-text text-center underline">Street Knowledge Check</h2>
-            <div id="quiz-container">
-                <div class="question mb-8" id="q1">
-                    <p class="text-xl mb-4">1. What is the main difference between Letter Names and Street Sounds?</p>
-                    <div class="space-y-3">
-                        <div class="quiz-option p-4 rounded gold-border" onclick="checkAnswer(this, true)">Names are for spelling, sounds are for speaking.</div>
-                        <div class="quiz-option p-4 rounded gold-border" onclick="checkAnswer(this, false)">Names are louder than sounds.</div>
-                        <div class="quiz-option p-4 rounded gold-border" onclick="checkAnswer(this, false)">There is no difference.</div>
+        <section data-aos="fade-up">
+            <h2 class="section-title">1. Name vs. Sound</h2>
+            <div class="card">
+                <p>In school, we learn the <b>Name</b> of the letter. On the street, we use the <b>Sound</b>. This is the secret to understanding native speakers!</p>
+                <br>
+                <div class="comparison-grid">
+                    <div class="sound-box">
+                        <h3>Vowels (A, E, I, O, U)</h3>
+                        <p>These are the "Bones" of the word. Without them, the word has no shape.</p>
                     </div>
-                </div>
-
-                <div class="question mb-8 hidden" id="q2">
-                    <p class="text-xl mb-4">2. Which letter requires a burst of air (plosive)?</p>
-                    <div class="space-y-3">
-                        <div class="quiz-option p-4 rounded gold-border" onclick="checkAnswer(this, false)">B</div>
-                        <div class="quiz-option p-4 rounded gold-border" onclick="checkAnswer(this, true)">P</div>
-                        <div class="quiz-option p-4 rounded gold-border" onclick="checkAnswer(this, false)">M</div>
-                    </div>
-                </div>
-
-                <div class="question mb-8 hidden" id="q3">
-                    <p class="text-xl mb-4">3. How many basic vowels are there in English?</p>
-                    <div class="space-y-3">
-                        <div class="quiz-option p-4 rounded gold-border" onclick="checkAnswer(this, true)">5 (A, E, I, O, U)</div>
-                        <div class="quiz-option p-4 rounded gold-border" onclick="checkAnswer(this, false)">3 (A, B, C)</div>
-                        <div class="quiz-option p-4 rounded gold-border" onclick="checkAnswer(this, false)">10</div>
-                    </div>
-                </div>
-
-                <div class="question mb-8 hidden" id="q4">
-                    <p class="text-xl mb-4">4. In the word "BIT", is the vowel Short or Long?</p>
-                    <div class="space-y-3">
-                        <div class="quiz-option p-4 rounded gold-border" onclick="checkAnswer(this, true)">Short</div>
-                        <div class="quiz-option p-4 rounded gold-border" onclick="checkAnswer(this, false)">Long</div>
-                    </div>
-                </div>
-
-                <div class="question mb-8 hidden" id="q5">
-                    <p class="text-xl mb-4">5. What happens to your throat when you say the "B" sound?</p>
-                    <div class="space-y-3">
-                        <div class="quiz-option p-4 rounded gold-border" onclick="checkAnswer(this, true)">It vibrates.</div>
-                        <div class="quiz-option p-4 rounded gold-border" onclick="checkAnswer(this, false)">It stays completely still.</div>
-                    </div>
-                </div>
-
-                <div class="question mb-8 hidden" id="q6">
-                    <p class="text-xl mb-4">6. In the word "BITE", is the vowel Short or Long?</p>
-                    <div class="space-y-3">
-                        <div class="quiz-option p-4 rounded gold-border" onclick="checkAnswer(this, false)">Short</div>
-                        <div class="quiz-option p-4 rounded gold-border" onclick="checkAnswer(this, true)">Long</div>
-                    </div>
-                </div>
-
-                <div class="question mb-8 hidden" id="q7">
-                    <p class="text-xl mb-4">7. Which body part is most important for making "Clear" sounds?</p>
-                    <div class="space-y-3">
-                        <div class="quiz-option p-4 rounded gold-border" onclick="checkAnswer(this, true)">Mouth & Tongue</div>
-                        <div class="quiz-option p-4 rounded gold-border" onclick="checkAnswer(this, false)">Ears</div>
-                    </div>
-                </div>
-
-                <div class="question mb-8 hidden" id="q8">
-                    <p class="text-xl mb-4">8. "Repeat" means to say something...?</p>
-                    <div class="space-y-3">
-                        <div class="quiz-option p-4 rounded gold-border" onclick="checkAnswer(this, false)">One time only.</div>
-                        <div class="quiz-option p-4 rounded gold-border" onclick="checkAnswer(this, true)">Again.</div>
+                    <div class="sound-box">
+                        <h3>The "P vs B" Battle</h3>
+                        <p><b>P</b> = Air explosion (Hold a paper in front of your mouth).<br><b>B</b> = Voice vibration.</p>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <div id="score-area" class="text-center hidden">
-                <h3 class="text-4xl font-bold gold-text mb-4">Lesson Complete!</h3>
-                <p class="text-2xl" id="final-score"></p>
-                <button class="mt-6 btn-gold" onclick="location.reload()">Restart Lesson</button>
+        <section data-aos="fade-up">
+            <h2 class="section-title">2. Street Visual Dictionary</h2>
+            <div class="dictionary-grid" id="dictionary">
+                </div>
+        </section>
+
+        <section data-aos="fade-up" style="margin-top: 50px;">
+            <h2 class="section-title">3. Knowledge Check</h2>
+            <div class="quiz-container" id="quiz-box">
+                <div id="quiz-content">
+                    </div>
+                <div id="quiz-result" style="text-align: center; display: none;">
+                    <h2 style="color: var(--maroon)">Lesson Complete!</h2>
+                    <p id="score-text"></p>
+                    <button onclick="location.reload()" class="option-btn" style="background: var(--gold); color: white; border: none;">Restart Lesson</button>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <footer class="text-center py-10 bg-black/40 border-t border-yellow-700/30">
-        <p class="gold-text font-bold">&copy; 2024 North Castle English. All Rights Reserved.</p>
-        <p class="text-sm text-gray-400">Restricted Content - For Registered Students Only</p>
+    </div>
+
+    <footer style="text-align: center; padding: 40px; color: var(--gold); font-size: 0.8rem;">
+        &copy; 2024 Street English Coach | Premium Learning Experience
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
-        AOS.init({ duration: 1000, once: true });
+        AOS.init({ duration: 1000 });
 
-        let currentQuestion = 1;
+        // Dictionary Data
+        const words = [
+            { w: "Speak", img: "conversation" }, { w: "Listen", img: "ear" }, 
+            { w: "Sound", img: "audio" }, { w: "Mouth", img: "smile" }, 
+            { w: "Voice", img: "singing" }, { w: "Repeat", img: "refresh" }, 
+            { w: "Letter", img: "alphabet" }, { w: "Word", img: "book" }, 
+            { w: "Vowel", img: "vowels" }, { w: "Tongue", img: "mouth" }, 
+            { w: "Breath", img: "nature" }, { w: "Fast", img: "running" }, 
+            { w: "Slow", img: "turtle" }, { w: "Clear", img: "water" }, 
+            { w: "Loud", img: "speaker" }
+        ];
+
+        const dictContainer = document.getElementById('dictionary');
+        words.forEach(item => {
+            dictContainer.innerHTML += `
+                <div class="word-card">
+                    <img src="https://loremflickr.com/300/200/${item.img},modest" 
+                         onerror="this.src='https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=400'" 
+                         alt="${item.w}">
+                    <strong>${item.w}</strong>
+                </div>
+            `;
+        });
+
+        // Quiz Logic
+        const questions = [
+            { q: "What is the secret to 'Street English'?", a: ["Learning letter names", "Focusing on sounds", "Reading old books"], c: 1 },
+            { q: "How do you test the letter 'P'?", a: ["Using a mirror", "Holding a paper to feel air", "Touching your throat"], c: 1 },
+            { q: "Which are the 'Bones' of a word?", a: ["Consonants", "Vowels", "Numbers"], c: 1 },
+            { q: "What is the Arabic speaker's biggest challenge in this lesson?", a: ["The 'A' sound", "The 'P vs B' difference", "The 'Loud' sound"], c: 1 },
+            { q: "What do we call A, E, I, O, U?", a: ["Street letters", "Vowels", "Voices"], c: 1 },
+            { q: "Which word means to do it again?", a: ["Repeat", "Listen", "Clear"], c: 0 },
+            { q: "How should you speak to be understood?", a: ["Fast", "Loud & Clear", "Slow & Quiet"], c: 1 },
+            { q: "True or False: The name of a letter is always the same as its sound.", a: ["True", "False"], c: 1 }
+        ];
+
+        let currentQ = 0;
         let score = 0;
+        const quizContent = document.getElementById('quiz-content');
 
-        function checkAnswer(element, isCorrect) {
-            if (element.parentElement.classList.contains('answered')) return;
-            
-            element.parentElement.classList.add('answered');
-            if (isCorrect) {
-                element.classList.add('correct');
+        function loadQuestion() {
+            if (currentQ >= questions.length) {
+                showResult();
+                return;
+            }
+            const q = questions[currentQ];
+            let html = `<div class="question active">
+                <h3>Question ${currentQ + 1} of ${questions.length}</h3>
+                <p style="font-size: 1.2rem; margin: 15px 0;">${q.q}</p>
+                ${q.a.map((opt, i) => `<button class="option-btn" onclick="checkAnswer(${i})">${opt}</button>`).join('')}
+            </div>`;
+            quizContent.innerHTML = html;
+        }
+
+        window.checkAnswer = function(idx) {
+            const btns = document.querySelectorAll('.option-btn');
+            if (idx === questions[currentQ].c) {
+                btns[idx].classList.add('correct');
                 score++;
             } else {
-                element.classList.add('wrong');
+                btns[idx].classList.add('wrong');
+                btns[questions[currentQ].c].classList.add('correct');
             }
-
+            
             setTimeout(() => {
-                document.getElementById(`q${currentQuestion}`).classList.add('hidden');
-                currentQuestion++;
-                if (currentQuestion <= 8) {
-                    document.getElementById(`q${currentQuestion}`).classList.remove('hidden');
-                } else {
-                    showScore();
-                }
-            }, 1000);
+                currentQ++;
+                loadQuestion();
+            }, 1500);
+        };
+
+        function showResult() {
+            quizContent.style.display = 'none';
+            document.getElementById('quiz-result').style.display = 'block';
+            document.getElementById('score-text').innerText = `You scored ${score} out of ${questions.length}!`;
         }
 
-        function showScore() {
-            document.getElementById('quiz-container').classList.add('hidden');
-            document.getElementById('score-area').classList.remove('hidden');
-            document.getElementById('final-score').innerText = `You mastered ${score} out of 8 Street Secrets!`;
-        }
-
-        // Security: Prevent Text Selection and F12
-        document.onkeydown = function(e) {
-            if(e.keyCode == 123) return false;
-            if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) return false;
-            if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) return false;
-            if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) return false;
-            if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false;
-        }
+        loadQuestion();
     </script>
 </body>
 </html>
