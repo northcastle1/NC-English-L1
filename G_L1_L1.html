@@ -3,299 +3,381 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Street English: Alphabet & Street Sounds</title>
-    
+    <title>North Castle | Lecture 1: Street Sounds</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         :root {
             --maroon: #500b0b;
             --gold: #D4AF37;
             --white: #ffffff;
-            --dark-maroon: #3a0808;
-            --success: #28a745;
-            --error: #dc3545;
+            --dark-gold: #b8860b;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            user-select: none; /* Security: Disable text selection */
-            -webkit-user-select: none;
+            font-family: 'Poppins', sans-serif;
+            -webkit-user-select: none; /* Disable text selection */
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
             background-color: var(--maroon);
             color: var(--white);
             line-height: 1.6;
             overflow-x: hidden;
         }
 
-        /* Header Section */
-        header {
-            height: 60vh;
-            background: linear-gradient(rgba(80, 11, 11, 0.8), rgba(80, 11, 11, 0.8)), 
-                        url('https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=1200&q=80');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            border-bottom: 5px solid var(--gold);
+        /* Protection - Cursor feedback */
+        body {
+            cursor: default;
         }
 
-        .logo-text {
-            font-weight: 700;
-            font-size: 3rem;
+        /* Header & Navbar */
+        nav {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--gold);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .brand {
             color: var(--gold);
-            text-transform: uppercase;
+            font-weight: 700;
+            font-size: 1.5rem;
             letter-spacing: 2px;
         }
 
-        /* Content Sections */
+        .lecture-num {
+            font-weight: 400;
+            text-transform: uppercase;
+        }
+
+        /* Container */
         .container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 40px 20px;
         }
 
-        .section-title {
-            color: var(--gold);
-            font-size: 2rem;
-            margin-bottom: 30px;
+        /* Hero Section */
+        .hero {
             text-align: center;
-            text-transform: uppercase;
-            border-bottom: 2px solid var(--gold);
-            display: inline-block;
-            padding-bottom: 5px;
+            padding: 60px 0;
         }
 
-        .card {
-            background: var(--dark-maroon);
+        .hero h1 {
+            font-size: 3.5rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        /* Section Styling */
+        section {
+            margin-bottom: 80px;
+        }
+
+        h2 {
+            color: var(--gold);
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            border-left: 5px solid var(--gold);
+            padding-left: 15px;
+        }
+
+        .content-card {
+            background: rgba(255, 255, 255, 0.05);
             padding: 30px;
             border-radius: 15px;
-            margin-bottom: 40px;
-            border-left: 5px solid var(--gold);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            margin-bottom: 30px;
         }
 
-        /* Street Sounds Content */
-        .comparison-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
-        .sound-box {
-            background: rgba(212, 175, 55, 0.1);
-            padding: 20px;
+        /* Images with Gold Borders & Hover Zoom */
+        .img-container {
+            width: 100%;
+            border: 3px solid var(--gold);
             border-radius: 10px;
-            text-align: center;
+            overflow: hidden;
+            margin-bottom: 20px;
+            transition: transform 0.4s ease;
         }
 
-        .sound-box h3 { color: var(--gold); margin-bottom: 10px; }
+        .img-container:hover {
+            transform: scale(1.03);
+        }
 
-        /* Visual Dictionary */
+        .img-container img {
+            width: 100%;
+            display: block;
+        }
+
+        /* Visual Dictionary Grid */
         .dictionary-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
         }
 
-        .word-card {
-            background: var(--white);
-            color: var(--maroon);
+        .dict-card {
+            background: rgba(0,0,0,0.2);
             padding: 15px;
             border-radius: 10px;
             text-align: center;
-            transition: transform 0.3s;
+            border-bottom: 3px solid var(--gold);
         }
 
-        .word-card:hover { transform: translateY(-5px); }
-
-        .word-card img {
-            width: 100%;
-            height: 120px;
-            object-fit: cover;
-            border-radius: 5px;
-            margin-bottom: 10px;
+        .dict-card h3 {
+            color: var(--gold);
+            margin-top: 10px;
         }
 
-        /* Quiz Styling */
+        /* Quiz Styles */
         .quiz-container {
-            background: var(--white);
-            color: var(--maroon);
+            background: #2a0505;
             padding: 40px;
             border-radius: 20px;
+            border: 2px solid var(--gold);
         }
 
-        .question { margin-bottom: 25px; display: none; }
-        .question.active { display: block; }
-        
+        .question {
+            margin-bottom: 30px;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
         .option-btn {
-            display: block;
-            width: 100%;
-            padding: 15px;
-            margin: 10px 0;
-            border: 2px solid var(--maroon);
-            background: none;
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--white);
+            padding: 12px;
             border-radius: 8px;
             cursor: pointer;
-            font-weight: 600;
-            transition: 0.3s;
+            transition: all 0.3s ease;
         }
 
-        .option-btn:hover { background: #f0f0f0; }
-        .correct { background: var(--success) !important; color: white; border-color: var(--success); }
-        .wrong { background: var(--error) !important; color: white; border-color: var(--error); }
+        .option-btn:hover {
+            background: rgba(212, 175, 55, 0.2);
+        }
+
+        .correct {
+            background-color: #28a745 !important;
+            border-color: #28a745 !important;
+        }
+
+        .wrong {
+            background-color: #dc3545 !important;
+            border-color: #dc3545 !important;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px;
+            background: rgba(0,0,0,0.5);
+            border-top: 1px solid var(--gold);
+            margin-top: 50px;
+        }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .comparison-grid { grid-template-columns: 1fr; }
-            .logo-text { font-size: 2rem; }
+            .options-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.5rem; }
         }
     </style>
 </head>
-<body oncontextmenu="return false;"> <header>
-        <div data-aos="zoom-in">
-            <p style="color: var(--gold); font-weight: 600;">MODULE 1: LECTURE 1</p>
-            <h1 class="logo-text">Alphabet & Street Sounds</h1>
-            <p>Master the real English spoken on the streets.</p>
-        </div>
-    </header>
+<body oncontextmenu="return false;">
+
+    <nav>
+        <div class="brand">NORTH CASTLE</div>
+        <div class="lecture-num">Lecture 1</div>
+    </nav>
 
     <div class="container">
-        
+        <section class="hero" data-aos="fade-up">
+            <h1>The Secrets of Pronunciation</h1>
+            <div class="img-container">
+                <img src="https://image.pollinations.ai/prompt/Cinematic_street_photography_of_London_market_with_multicultural_people_talking_wearing_hijab_modest_clothes_warm_lighting_8k?width=800&height=500&nologo=true" alt="Street English Context">
+            </div>
+            <div class="content-card">
+                <h2>The Hook: School vs. Street</h2>
+                <p>Forget what your dusty old textbook told you. In school, they teach you to speak like a robot. In the <strong>Street</strong>, English is alive! It's fast, it's messy, and it's all about rhythm. If you want to sound like a native, you need to stop reading letters and start feeling the vibrations.</p>
+            </div>
+        </section>
+
         <section data-aos="fade-up">
-            <h2 class="section-title">1. Name vs. Sound</h2>
-            <div class="card">
-                <p>In school, we learn the <b>Name</b> of the letter. On the street, we use the <b>Sound</b>. This is the secret to understanding native speakers!</p>
-                <br>
-                <div class="comparison-grid">
-                    <div class="sound-box">
-                        <h3>Vowels (A, E, I, O, U)</h3>
-                        <p>These are the "Bones" of the word. Without them, the word has no shape.</p>
+            <h2>Vowels Secret: The Shape Shifters</h2>
+            <div class="dictionary-grid">
+                <div class="content-card">
+                    <h3>Short Vowels</h3>
+                    <p>Think "Cat", "Bed", "Sit". They are quick, sharp, and punchy. No hanging around!</p>
+                </div>
+                <div class="content-card">
+                    <h3>Long Vowels</h3>
+                    <p>Think "Cake", "Sleep", "Light". These vowels take their time. They stretch out like they're on vacation.</p>
+                </div>
+            </div>
+            <div class="img-container">
+                <img src="https://image.pollinations.ai/prompt/Abstract_digital_art_of_glowing_neon_letters_AEIOU_floating_in_dark_crimson_space_gold_highlights_high_resolution?width=800&height=500&nologo=true" alt="Vowels Art">
+            </div>
+        </section>
+
+        <section data-aos="fade-up">
+            <h2>The Trap: P vs. B</h2>
+            <p>This is where most students get caught. The difference is just a puff of air!</p>
+            <div class="dictionary-grid">
+                <div class="dict-card">
+                    <div class="img-container">
+                        <img src="https://image.pollinations.ai/prompt/A_beautiful_city_park_with_green_trees_and_a_bench_golden_hour_serene_atmosphere?width=800&height=500&nologo=true" alt="Park">
                     </div>
-                    <div class="sound-box">
-                        <h3>The "P vs B" Battle</h3>
-                        <p><b>P</b> = Air explosion (Hold a paper in front of your mouth).<br><b>B</b> = Voice vibration.</p>
+                    <h3>P is for PARK</h3>
+                    <p>Hold a tissue in front of your mouth. Say "Park". The tissue <strong>must</strong> move! (Unvoiced air).</p>
+                </div>
+                <div class="dict-card">
+                    <div class="img-container">
+                        <img src="https://image.pollinations.ai/prompt/A_large_friendly_golden_retriever_dog_barking_joyfully_in_a_garden_sunny_day?width=800&height=500&nologo=true" alt="Bark">
                     </div>
+                    <h3>B is for BARK</h3>
+                    <p>Touch your throat. Say "Bark". You should feel a <strong>buzz</strong>. (Voiced sound).</p>
                 </div>
             </div>
         </section>
 
         <section data-aos="fade-up">
-            <h2 class="section-title">2. Street Visual Dictionary</h2>
-            <div class="dictionary-grid" id="dictionary">
+            <h2>Visual Dictionary</h2>
+            <div class="dictionary-grid">
+                <div class="dict-card">
+                    <img src="https://image.pollinations.ai/prompt/Close_up_of_a_woman_wearing_a_hijab_speaking_into_a_vintage_microphone_gold_accents?width=800&height=500&nologo=true" style="width:100%; border-radius:10px;">
+                    <h3>Voice</h3>
                 </div>
-        </section>
-
-        <section data-aos="fade-up" style="margin-top: 50px;">
-            <h2 class="section-title">3. Knowledge Check</h2>
-            <div class="quiz-container" id="quiz-box">
-                <div id="quiz-content">
-                    </div>
-                <div id="quiz-result" style="text-align: center; display: none;">
-                    <h2 style="color: var(--maroon)">Lesson Complete!</h2>
-                    <p id="score-text"></p>
-                    <button onclick="location.reload()" class="option-btn" style="background: var(--gold); color: white; border: none;">Restart Lesson</button>
+                <div class="dict-card">
+                    <img src="https://image.pollinations.ai/prompt/Extreme_close_up_of_human_mouth_lips_parted_forming_the_letter_O_high_detail_artistic?width=800&height=500&nologo=true" style="width:100%; border-radius:10px;">
+                    <h3>Mouth</h3>
+                </div>
+                <div class="dict-card">
+                    <img src="https://image.pollinations.ai/prompt/A_golden_megaphone_blasting_visible_sound_waves_against_a_dark_background?width=800&height=500&nologo=true" style="width:100%; border-radius:10px;">
+                    <h3>Loud</h3>
+                </div>
+                <div class="dict-card">
+                    <img src="https://image.pollinations.ai/prompt/Two_women_in_modest_clothing_and_hijab_whispering_secrets_to_each_other_soft_lighting?width=800&height=500&nologo=true" style="width:100%; border-radius:10px;">
+                    <h3>Whisper</h3>
+                </div>
+                <div class="dict-card">
+                    <img src="https://image.pollinations.ai/prompt/Stylized_human_ear_listening_to_floating_musical_notes_and_golden_spirals?width=800&height=500&nologo=true" style="width:100%; border-radius:10px;">
+                    <h3>Listen</h3>
+                </div>
+                <div class="dict-card">
+                    <img src="https://image.pollinations.ai/prompt/Grand_canyon_landscape_with_visible_concentric_circles_representing_sound_echoes?width=800&height=500&nologo=true" style="width:100%; border-radius:10px;">
+                    <h3>Echo</h3>
+                </div>
+                <div class="dict-card">
+                    <img src="https://image.pollinations.ai/prompt/Two_friends_sitting_in_a_cafe_talking_wearing_modest_clothes_and_hijab_happy_mood?width=800&height=500&nologo=true" style="width:100%; border-radius:10px;">
+                    <h3>Talk</h3>
+                </div>
+                <div class="dict-card">
+                    <img src="https://image.pollinations.ai/prompt/A_person_standing_on_a_mountain_peak_shouting_with_hands_around_mouth_modest_clothing?width=800&height=500&nologo=true" style="width:100%; border-radius:10px;">
+                    <h3>Shout</h3>
+                </div>
+                <div class="dict-card">
+                    <img src="https://image.pollinations.ai/prompt/Macro_illustration_of_a_human_tongue_showing_taste_buds_and_muscle_detail?width=800&height=500&nologo=true" style="width:100%; border-radius:10px;">
+                    <h3>Tongue</h3>
+                </div>
+                <div class="dict-card">
+                    <img src="https://image.pollinations.ai/prompt/Close_up_of_smiling_lips_with_natural_expression_warm_lighting_artistic_composition?width=800&height=500&nologo=true" style="width:100%; border-radius:10px;">
+                    <h3>Lips</h3>
+                </div>
+                <div class="dict-card">
+                    <img src="https://image.pollinations.ai/prompt/Abstract_representation_of_city_noise_with_distorted_lines_and_dark_colors?width=800&height=500&nologo=true" style="width:100%; border-radius:10px;">
+                    <h3>Noise</h3>
+                </div>
+                <div class="dict-card">
+                    <img src="https://image.pollinations.ai/prompt/A_solitary_candle_burning_in_a_pitch_black_room_representing_silence_and_calm?width=800&height=500&nologo=true" style="width:100%; border-radius:10px;">
+                    <h3>Silence</h3>
                 </div>
             </div>
         </section>
 
+        <section data-aos="fade-up" id="quiz">
+            <h2>Check Your Skills</h2>
+            <div class="quiz-container">
+                <div id="quiz-box">
+                    </div>
+            </div>
+        </section>
     </div>
 
-    <footer style="text-align: center; padding: 40px; color: var(--gold); font-size: 0.8rem;">
-        &copy; 2024 Street English Coach | Premium Learning Experience
+    <footer>
+        <p>© 2026 North Castle. All Rights Reserved.</p>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1000 });
+        AOS.init({ duration: 1000, once: true });
 
-        // Dictionary Data
-        const words = [
-            { w: "Speak", img: "conversation" }, { w: "Listen", img: "ear" }, 
-            { w: "Sound", img: "audio" }, { w: "Mouth", img: "smile" }, 
-            { w: "Voice", img: "singing" }, { w: "Repeat", img: "refresh" }, 
-            { w: "Letter", img: "alphabet" }, { w: "Word", img: "book" }, 
-            { w: "Vowel", img: "vowels" }, { w: "Tongue", img: "mouth" }, 
-            { w: "Breath", img: "nature" }, { w: "Fast", img: "running" }, 
-            { w: "Slow", img: "turtle" }, { w: "Clear", img: "water" }, 
-            { w: "Loud", img: "speaker" }
+        // Quiz Data
+        const quizData = [
+            { q: "What is the main focus of 'Street English'?", a: ["Perfect Grammar", "Rhythm and Sounds", "Writing Essays", "Old Vocabulary"], correct: 1 },
+            { q: "Which word has a 'Long Vowel' sound?", a: ["Cat", "Sit", "Cake", "Bed"], correct: 2 },
+            { q: "When you say the letter 'P' in 'Park', what should happen?", a: ["Throat vibrates", "No air comes out", "A puff of air comes out", "Your eyes close"], correct: 2 },
+            { q: "What sound does your throat make when saying 'B' in 'Bark'?", a: ["Silence", "A buzz/vibration", "A whistling sound", "No sound"], correct: 1 },
+            { q: "Which word means a sound that bounces back to you?", a: ["Whisper", "Noise", "Echo", "Shout"], correct: 2 },
+            { q: "In the Visual Dictionary, which word represents the absence of sound?", a: ["Silence", "Loud", "Voice", "Talk"], correct: 0 },
+            { q: "Short vowels are usually...", a: ["Stretched and long", "Quick and punchy", "Only used in 'Park'", "Silent"], correct: 1 },
+            { q: "Why is 'School English' different?", a: ["It's too fast", "It's often too formal and robotic", "It uses more gold", "It's only for adults"], correct: 1 }
         ];
 
-        const dictContainer = document.getElementById('dictionary');
-        words.forEach(item => {
-            dictContainer.innerHTML += `
-                <div class="word-card">
-                    <img src="https://loremflickr.com/300/200/${item.img},modest" 
-                         onerror="this.src='https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=400'" 
-                         alt="${item.w}">
-                    <strong>${item.w}</strong>
+        function loadQuiz() {
+            const quizBox = document.getElementById('quiz-box');
+            quizBox.innerHTML = quizData.map((item, index) => `
+                <div class="question">
+                    <p><strong>${index + 1}. ${item.q}</strong></p>
+                    <div class="options-grid">
+                        ${item.a.map((opt, i) => `
+                            <button class="option-btn" onclick="checkAnswer(this, ${i}, ${item.correct})">${opt}</button>
+                        `).join('')}
+                    </div>
                 </div>
-            `;
+            `).join('');
+        }
+
+        function checkAnswer(btn, selected, correct) {
+            const parent = btn.parentElement;
+            const buttons = parent.querySelectorAll('.option-btn');
+            
+            // Disable all buttons in this question
+            buttons.forEach(b => b.style.pointerEvents = 'none');
+
+            if (selected === correct) {
+                btn.classList.add('correct');
+            } else {
+                btn.classList.add('wrong');
+                buttons[correct].classList.add('correct');
+            }
+        }
+
+        // Disable Copy & Shortcuts
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && (e.keyCode === 67 || e.keyCode === 85 || e.keyCode === 83)) {
+                e.preventDefault();
+            }
         });
 
-        // Quiz Logic
-        const questions = [
-            { q: "What is the secret to 'Street English'?", a: ["Learning letter names", "Focusing on sounds", "Reading old books"], c: 1 },
-            { q: "How do you test the letter 'P'?", a: ["Using a mirror", "Holding a paper to feel air", "Touching your throat"], c: 1 },
-            { q: "Which are the 'Bones' of a word?", a: ["Consonants", "Vowels", "Numbers"], c: 1 },
-            { q: "What is the Arabic speaker's biggest challenge in this lesson?", a: ["The 'A' sound", "The 'P vs B' difference", "The 'Loud' sound"], c: 1 },
-            { q: "What do we call A, E, I, O, U?", a: ["Street letters", "Vowels", "Voices"], c: 1 },
-            { q: "Which word means to do it again?", a: ["Repeat", "Listen", "Clear"], c: 0 },
-            { q: "How should you speak to be understood?", a: ["Fast", "Loud & Clear", "Slow & Quiet"], c: 1 },
-            { q: "True or False: The name of a letter is always the same as its sound.", a: ["True", "False"], c: 1 }
-        ];
-
-        let currentQ = 0;
-        let score = 0;
-        const quizContent = document.getElementById('quiz-content');
-
-        function loadQuestion() {
-            if (currentQ >= questions.length) {
-                showResult();
-                return;
-            }
-            const q = questions[currentQ];
-            let html = `<div class="question active">
-                <h3>Question ${currentQ + 1} of ${questions.length}</h3>
-                <p style="font-size: 1.2rem; margin: 15px 0;">${q.q}</p>
-                ${q.a.map((opt, i) => `<button class="option-btn" onclick="checkAnswer(${i})">${opt}</button>`).join('')}
-            </div>`;
-            quizContent.innerHTML = html;
-        }
-
-        window.checkAnswer = function(idx) {
-            const btns = document.querySelectorAll('.option-btn');
-            if (idx === questions[currentQ].c) {
-                btns[idx].classList.add('correct');
-                score++;
-            } else {
-                btns[idx].classList.add('wrong');
-                btns[questions[currentQ].c].classList.add('correct');
-            }
-            
-            setTimeout(() => {
-                currentQ++;
-                loadQuestion();
-            }, 1500);
-        };
-
-        function showResult() {
-            quizContent.style.display = 'none';
-            document.getElementById('quiz-result').style.display = 'block';
-            document.getElementById('score-text').innerText = `You scored ${score} out of ${questions.length}!`;
-        }
-
-        loadQuestion();
+        loadQuiz();
     </script>
 </body>
 </html>
