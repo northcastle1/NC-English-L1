@@ -3,258 +3,298 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>North Castle | Lecture 1: Street English</title>
-    
+    <title>North Castle | Alphabet & Street Sounds</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
-        :root {
-            --nc-maroon: #500b0b;
-            --nc-gold: #d4af37;
-        }
-
         body {
-            background-color: var(--nc-maroon);
-            color: white;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', sans-serif;
+            background-color: #500b0b;
+            color: #ffffff;
             user-select: none; /* Disable text selection */
         }
-
-        .gold-border { border: 2px solid var(--nc-gold); }
-        .text-gold { color: var(--nc-gold); }
-        .bg-gold { background-color: var(--nc-gold); }
-
-        .alphabet-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
-            gap: 10px;
-        }
-
-        .letter-card {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .letter-card.vowel {
-            border: 2px solid var(--nc-gold);
-            color: var(--nc-gold);
-            font-weight: bold;
-        }
-
-        .quiz-option:hover {
-            background: var(--nc-gold);
-            color: var(--nc-maroon);
-        }
-
-        /* Custom Scrollbar */
+        .gold-text { color: #D4AF37; }
+        .gold-bg { background-color: #D4AF37; }
+        .gold-border { border-color: #D4AF37; }
+        
+        /* Custom scrollbar for premium feel */
         ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--nc-maroon); }
-        ::-webkit-scrollbar-thumb { background: var(--nc-gold); border-radius: 10px; }
+        ::-webkit-scrollbar-track { background: #3a0808; }
+        ::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 10px; }
+
+        .quiz-btn {
+            transition: all 0.3s ease;
+            border: 1px solid #D4AF37;
+        }
+        .quiz-btn:disabled {
+            cursor: not-allowed;
+        }
     </style>
 </head>
-<body class="antialiased" oncontextmenu="return false;">
-
-    <header class="py-6 px-4 sticky top-0 bg-[#500b0b] z-50 border-b border-[#d4af37]/30 shadow-2xl">
-        <div class="max-w-5xl mx-auto flex justify-between items-center">
-            <h1 class="text-3xl font-black tracking-tighter">
-                <span class="text-gold">NORTH</span> CASTLE
-            </h1>
-            <span class="text-lg font-light tracking-widest uppercase">Lecture 1</span>
-        </div>
+<body oncontextmenu="return false;"> <header class="p-6 flex justify-between items-center border-b border-yellow-900/50 bg-[#3a0808]">
+        <h1 class="text-2xl font-bold gold-text tracking-widest">NORTH CASTLE</h1>
+        <h2 class="text-lg font-light">Alphabet & Street Sounds</h2>
     </header>
 
-    <main class="max-w-4xl mx-auto px-6 py-12">
+    <main class="max-w-5xl mx-auto px-6 py-12">
         
-        <section class="mb-16 text-center" data-aos="fade-up">
-            <img src="https://loremflickr.com/800/400/learning,letters" alt="Learning English" class="rounded-xl shadow-lg mb-8 mx-auto gold-border">
-            <h2 class="text-4xl font-bold mb-4">Welcome to <span class="text-gold">Street English</span></h2>
-            <p class="text-xl text-gray-300 italic">"Forget the textbook. Start speaking like a local."</p>
-        </section>
-
-        <hr class="border-gold/20 mb-16">
+        <div data-aos="fade-down">
+            <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1000&q=80" 
+                 class="w-full h-64 object-cover rounded-xl border-b-4 border-yellow-600 mb-8 shadow-2xl" 
+                 alt="Street Culture">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold mb-2">Welcome to Street English</h2>
+                <p class="text-xl gold-text italic">"Forget the textbook. Start speaking like a local."</p>
+            </div>
+        </div>
 
         <section class="mb-20" data-aos="fade-up">
-            <div class="flex items-center mb-8">
-                <i class="fas fa-font text-gold text-3xl mr-4"></i>
-                <h3 class="text-3xl font-bold">The Big Picture: The Alphabet</h3>
-            </div>
-            <p class="mb-6 text-gray-300">Before we run, we walk. Here is the full English landscape. Pay attention to the <span class="text-gold font-bold">Gold</span> letters—they are your keys to pronunciation.</p>
-            
-            <div class="alphabet-grid text-center">
-                <div class="letter-card vowel p-4 rounded-lg">A</div>
-                <div class="letter-card p-4 rounded-lg">B</div>
-                <div class="letter-card p-4 rounded-lg">C</div>
-                <div class="letter-card p-4 rounded-lg">D</div>
-                <div class="letter-card vowel p-4 rounded-lg">E</div>
-                <div class="letter-card p-4 rounded-lg">F</div>
-                <div class="letter-card p-4 rounded-lg">G</div>
-                <div class="letter-card p-4 rounded-lg">H</div>
-                <div class="letter-card vowel p-4 rounded-lg">I</div>
-                <div class="letter-card p-4 rounded-lg">J</div>
-                <div class="letter-card p-4 rounded-lg">K</div>
-                <div class="letter-card p-4 rounded-lg">L</div>
-                <div class="letter-card p-4 rounded-lg">M</div>
-                <div class="letter-card p-4 rounded-lg">N</div>
-                <div class="letter-card vowel p-4 rounded-lg">O</div>
-                <div class="letter-card p-4 rounded-lg">P</div>
-                <div class="letter-card p-4 rounded-lg">Q</div>
-                <div class="letter-card p-4 rounded-lg">R</div>
-                <div class="letter-card p-4 rounded-lg">S</div>
-                <div class="letter-card p-4 rounded-lg">T</div>
-                <div class="letter-card vowel p-4 rounded-lg">U</div>
-                <div class="letter-card p-4 rounded-lg">V</div>
-                <div class="letter-card p-4 rounded-lg">W</div>
-                <div class="letter-card p-4 rounded-lg">X</div>
-                <div class="letter-card p-4 rounded-lg">Y</div>
-                <div class="letter-card p-4 rounded-lg">Z</div>
-            </div>
-        </section>
-
-        <section class="mb-20 bg-black/20 p-8 rounded-2xl gold-border" data-aos="fade-up">
-            <div class="flex items-center mb-6">
-                <i class="fas fa-key text-gold text-3xl mr-4"></i>
-                <h3 class="text-3xl font-bold">The Secret Sauce: Vowels</h3>
-            </div>
-            <p class="text-lg leading-relaxed mb-6">
-                Vowels are the "glue" that holds words together. In Street English, they change everything based on their "length".
-            </p>
-            <div class="grid md:grid-cols-2 gap-6">
-                <div class="p-4 bg-white/5 rounded-lg border-l-4 border-gold">
-                    <h4 class="font-bold text-gold text-xl mb-2">Short Sounds</h4>
-                    <p class="italic text-gray-400">Quick and punchy.</p>
-                    <p class="mt-2 text-2xl font-mono">"Cat", "Bed", "Sit"</p>
-                </div>
-                <div class="p-4 bg-white/5 rounded-lg border-l-4 border-gold">
-                    <h4 class="font-bold text-gold text-xl mb-2">Long Sounds</h4>
-                    <p class="italic text-gray-400">The letter says its own name.</p>
-                    <p class="mt-2 text-2xl font-mono">"Cake", "Feet", "Ice"</p>
-                </div>
+            <h3 class="text-3xl font-bold gold-text mb-6 flex items-center">
+                <i class="fas fa-anchor mr-4"></i> Why Mastering "Sounds" Matters
+            </h3>
+            <div class="bg-[#3a0808] p-8 rounded-2xl border-l-4 border-yellow-600 leading-relaxed text-lg">
+                <p class="mb-4">
+                    In school, they teach you that 'A' is for Apple and 'B' is for Boy. But when you step onto the streets of London, New York, or Sydney, the alphabet transforms. Real English isn't just about letters; it's about the <strong>rhythm, the shortcuts, and the "swallow"</strong> of sounds.
+                </p>
+                <p>
+                    If you speak exactly like the textbook, you sound like a robot. Locals don't say every syllable. They blend words together to create a flow. Understanding these "Street Sounds" is the difference between asking for directions and actually understanding the answer you're given. Today, we bridge the gap between "Classroom English" and the "Real World."
+                </p>
             </div>
         </section>
 
         <section class="mb-20" data-aos="fade-up">
-            <div class="flex items-center mb-6">
-                <i class="fas fa-exclamation-triangle text-gold text-3xl mr-4"></i>
-                <h3 class="text-3xl font-bold">The Common Mistake: P vs B</h3>
+            <h3 class="text-3xl font-bold gold-text mb-6">School vs. Street: The Transformation</h3>
+            <div class="overflow-hidden rounded-xl border border-yellow-900 shadow-xl">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-black/40 gold-text text-xl">
+                            <th class="p-6 border-b border-yellow-900">The Formal Way (School)</th>
+                            <th class="p-6 border-b border-yellow-900">The Street Way (Real Life)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-lg">
+                        <tr class="border-b border-yellow-900/30 hover:bg-white/5 transition">
+                            <td class="p-6 italic">"I am going to..."</td>
+                            <td class="p-6 font-bold gold-text text-2xl">"I'm gonna..."</td>
+                        </tr>
+                        <tr class="border-b border-yellow-900/30 hover:bg-white/5 transition">
+                            <td class="p-6 italic">"Want to..."</td>
+                            <td class="p-6 font-bold gold-text text-2xl">"Wanna..."</td>
+                        </tr>
+                        <tr class="border-b border-yellow-900/30 hover:bg-white/5 transition">
+                            <td class="p-6 italic">"Give me..."</td>
+                            <td class="p-6 font-bold gold-text text-2xl">"Gimme..."</td>
+                        </tr>
+                        <tr class="border-b border-yellow-900/30 hover:bg-white/5 transition">
+                            <td class="p-6 italic">"What is up?"</td>
+                            <td class="p-6 font-bold gold-text text-2xl">"'Sup?"</td>
+                        </tr>
+                        <tr class="hover:bg-white/5 transition">
+                            <td class="p-6 italic">"Kind of..."</td>
+                            <td class="p-6 font-bold gold-text text-2xl">"Kinda..."</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            <div class="grid md:grid-cols-2 gap-8 items-center">
-                <div>
-                    <p class="mb-4">Many beginners mix these up. The secret is the <strong class="text-gold uppercase">Tissue Test</strong>:</p>
-                    <ul class="space-y-4">
-                        <li class="flex items-start">
-                            <span class="bg-gold text-maroon rounded-full h-6 w-6 flex items-center justify-center mr-3 mt-1 font-bold">P</span>
-                            <span><strong>Explosive:</strong> Hold a tissue in front of your mouth. When you say "Peter", the tissue <strong>must move</strong>.</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="bg-gray-500 text-white rounded-full h-6 w-6 flex items-center justify-center mr-3 mt-1 font-bold">B</span>
-                            <span><strong>Vocal:</strong> When you say "Baby", your throat vibrates, but <strong>no air</strong> comes out.</span>
-                        </li>
+        </section>
+
+        <section class="mb-20" data-aos="fade-up">
+            <h3 class="text-3xl font-bold gold-text mb-6">The Coffee Shop Interaction</h3>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white/10 p-8 rounded-2xl border border-white/10">
+                    <h4 class="text-xl font-bold mb-4 gold-text underline">The Dialogue</h4>
+                    <p class="mb-4"><strong>Adam:</strong> Yo! 'Sup man? You <strong>gonna</strong> grab a coffee?</p>
+                    <p class="mb-4"><strong>Sami:</strong> Yeah, I <strong>wanna</strong> try that new blend. <strong>Whatcha</strong> think?</p>
+                    <p class="mb-4"><strong>Adam:</strong> It's <strong>kinda</strong> strong, but <strong>oughta</strong> keep you awake!</p>
+                </div>
+                <div class="bg-[#3a0808] p-8 rounded-2xl border-r-4 border-yellow-600">
+                    <h4 class="text-xl font-bold mb-4 gold-text underline">The Hidden Meanings</h4>
+                    <ul class="space-y-4 text-sm md:text-base">
+                        <li><span class="gold-text font-bold">'Sup:</span> Short for "What's up". Used as a casual greeting, not always a question.</li>
+                        <li><span class="gold-text font-bold">Whatcha:</span> A contraction of "What do you". It eliminates the "do you" sounds entirely.</li>
+                        <li><span class="gold-text font-bold">Oughta:</span> Short for "Ought to" (Should). In the street, the 't' becomes a soft 'd' sound.</li>
                     </ul>
                 </div>
-                <div class="bg-white/5 p-6 rounded-xl border border-gold/30 text-center">
-                    <i class="fas fa-wind text-5xl text-gold/50 mb-4"></i>
-                    <p class="italic">Try it now: <br><span class="text-2xl font-bold">"Pat" vs "Bat"</span></p>
+            </div>
+        </section>
+
+        <section class="mb-20" data-aos="zoom-in">
+            <h3 class="text-3xl font-bold gold-text mb-10 text-center">Essential Street Vocabulary</h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="flex flex-col items-center">
+                    <i class="fas fa-bolt text-5xl gold-text mb-4"></i>
+                    <p class="font-bold text-lg italic">Hectic</p>
+                    <p class="text-xs text-gray-400">(Very busy/crazy)</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <i class="fas fa-handshake text-5xl gold-text mb-4"></i>
+                    <p class="font-bold text-lg italic">Homie</p>
+                    <p class="text-xs text-gray-400">(Close friend)</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <i class="fas fa-coins text-5xl gold-text mb-4"></i>
+                    <p class="font-bold text-lg italic">Broke</p>
+                    <p class="text-xs text-gray-400">(No money)</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <i class="fas fa-fire text-5xl gold-text mb-4"></i>
+                    <p class="font-bold text-lg italic">Lit</p>
+                    <p class="text-xs text-gray-400">(Exciting/Great)</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <i class="fas fa-ghost text-5xl gold-text mb-4"></i>
+                    <p class="font-bold text-lg italic">Ghost</p>
+                    <p class="text-xs text-gray-400">(Leave suddenly)</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <i class="fas fa-brain text-5xl gold-text mb-4"></i>
+                    <p class="font-bold text-lg italic">No-brainer</p>
+                    <p class="text-xs text-gray-400">(Easy decision)</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <i class="fas fa-couch text-5xl gold-text mb-4"></i>
+                    <p class="font-bold text-lg italic">Chill</p>
+                    <p class="text-xs text-gray-400">(To relax)</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <i class="fas fa-heart-crack text-5xl gold-text mb-4"></i>
+                    <p class="font-bold text-lg italic">Bummer</p>
+                    <p class="text-xs text-gray-400">(A disappointment)</p>
                 </div>
             </div>
         </section>
 
         <section class="mb-20" data-aos="fade-up">
-            <div class="flex items-center mb-8">
-                <i class="fas fa-bullhorn text-gold text-3xl mr-4"></i>
-                <h3 class="text-3xl font-bold">Classroom Action Words</h3>
-            </div>
-            <p class="mb-8">These are the commands we will use in every session. Learn them once, use them forever.</p>
-            
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="text-center p-6 border border-white/10 rounded-xl hover:border-gold transition-colors">
-                    <i class="fas fa-ear-listen text-3xl text-gold mb-3"></i>
-                    <p class="font-bold">LISTEN</p>
-                </div>
-                <div class="text-center p-6 border border-white/10 rounded-xl hover:border-gold transition-colors">
-                    <i class="fas fa-redo text-3xl text-gold mb-3"></i>
-                    <p class="font-bold">REPEAT</p>
-                </div>
-                <div class="text-center p-6 border border-white/10 rounded-xl hover:border-gold transition-colors">
-                    <i class="fas fa-volume-up text-3xl text-gold mb-3"></i>
-                    <p class="font-bold">LOUD</p>
-                </div>
-                <div class="text-center p-6 border border-white/10 rounded-xl hover:border-gold transition-colors">
-                    <i class="fas fa-bolt text-3xl text-gold mb-3"></i>
-                    <p class="font-bold">FAST</p>
-                </div>
-            </div>
-        </section>
+            <div class="bg-black/30 p-10 rounded-3xl border-2 border-yellow-600/30 shadow-2xl">
+                <h3 class="text-4xl font-bold gold-text mb-8 text-center">Street Skills Challenge</h3>
+                
+                <div id="quiz-container" class="space-y-12">
+                    <div class="question-block" data-correct="2">
+                        <p class="text-xl mb-4">1. What does "I'm gonna" mean in formal English?</p>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <button onclick="checkAnswer(this, 0)" class="quiz-btn p-4 rounded-lg bg-white/5 hover:bg-white/10">I am gone</button>
+                            <button onclick="checkAnswer(this, 1)" class="quiz-btn p-4 rounded-lg bg-white/5 hover:bg-white/10">I want to</button>
+                            <button onclick="checkAnswer(this, 2)" class="quiz-btn p-4 rounded-lg bg-white/5 hover:bg-white/10">I am going to</button>
+                            <button onclick="checkAnswer(this, 3)" class="quiz-btn p-4 rounded-lg bg-white/5 hover:bg-white/10">I am good</button>
+                        </div>
+                    </div>
 
-        <section id="quiz" class="mb-20 py-12 border-t-2 border-gold/50" data-aos="fade-up">
-            <h3 class="text-3xl font-bold text-center mb-12 uppercase tracking-widest">Knowledge Check</h3>
-            
-            <div id="quiz-container" class="space-y-8">
-                <div class="quiz-block bg-black/10 p-6 rounded-xl border border-white/5">
-                    <p class="text-xl mb-4">1. How many vowels are in the English Alphabet?</p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                        <button class="quiz-option text-left p-3 rounded border border-white/20 transition-all">A) 3</button>
-                        <button class="quiz-option text-left p-3 rounded border border-white/20 transition-all">B) 5 (A, E, I, O, U)</button>
-                        <button class="quiz-option text-left p-3 rounded border border-white/20 transition-all">C) 7</button>
-                        <button class="quiz-option text-left p-3 rounded border border-white/20 transition-all">D) 21</button>
+                    <div class="question-block" data-correct="1">
+                        <p class="text-xl mb-4">2. If someone says "'Sup?", how should you reply?</p>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <button onclick="checkAnswer(this, 0)" class="quiz-btn p-4 rounded-lg bg-white/5 hover:bg-white/10">I am under the roof.</button>
+                            <button onclick="checkAnswer(this, 1)" class="quiz-btn p-4 rounded-lg bg-white/5 hover:bg-white/10">Not much, you?</button>
+                            <button onclick="checkAnswer(this, 2)" class="quiz-btn p-4 rounded-lg bg-white/5 hover:bg-white/10">Yes, it is up.</button>
+                            <button onclick="checkAnswer(this, 3)" class="quiz-btn p-4 rounded-lg bg-white/5 hover:bg-white/10">Good afternoon.</button>
+                        </div>
+                    </div>
+
+                    <div class="question-block" data-correct="3">
+                        <p class="text-xl mb-4">3. Complete the street phrase: "____ me that phone."</p>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <button onclick="checkAnswer(this, 0)" class="quiz-btn p-4 rounded-lg bg-white/5 hover:bg-white/10">Gonna</button>
+                            <button onclick="checkAnswer(this, 1)" class="quiz-btn p-4 rounded-lg bg-white/5 hover:bg-white/10">Wanna</button>
+                            <button onclick="checkAnswer(this, 2)" class="quiz-btn p-4 rounded-lg bg-white/5 hover:bg-white/10">Kinda</button>
+                            <button onclick="checkAnswer(this, 3)" class="quiz-btn p-4 rounded-lg bg-white/5 hover:bg-white/10">Gimme</button>
+                        </div>
+                    </div>
+
+                    <div class="question-block" data-correct="0">
+                        <p class="text-xl mb-4">4. What is a "Homie"?</p>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <button onclick="checkAnswer(this, 0)" class="quiz-btn p-4 rounded-lg bg-white/5 hover:bg-white/10">A close friend</button>
+                            <button onclick="checkAnswer(this, 1)" class="quiz-btn p-4 rounded-lg bg-white/5 hover:bg-white/10">A small house</button>
+                            <button onclick="checkAnswer(this, 2)" class="quiz-btn p-4 rounded-lg bg-white/5 hover:bg-white/10">An expensive car</button>
+                            <button onclick="checkAnswer(this, 3)" class="quiz-btn p-4 rounded-lg bg-white/5 hover:bg-white/10">A teacher</button>
+                        </div>
+                    </div>
+
+                    <div class="question-block" data-correct="2">
+                        <p class="text-xl mb-4">5. If a party is "Lit", it is:</p>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <button onclick="checkAnswer(this, 0)" class="quiz-btn p-4 rounded-lg bg-white/5 hover:bg-white/10">Too dark</button>
+                            <button onclick="checkAnswer(this, 1)" class="quiz-btn p-4 rounded-lg bg-white/5 hover:bg-white/10">On fire</button>
+                            <button onclick="checkAnswer(this, 2)" class="quiz-btn p-4 rounded-lg bg-white/5 hover:bg-white/10">Very exciting</button>
+                            <button onclick="checkAnswer(this, 3)" class="quiz-btn p-4 rounded-lg bg-white/5 hover:bg-white/10">Finished</button>
+                        </div>
+                    </div>
+
+                    <div class="question-block" data-correct="1">
+                        <p class="text-xl mb-4">6. "Whatcha doin'?" means:</p>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <button onclick="checkAnswer(this, 0)" class="quiz-btn p-4 rounded-lg bg-white/5 hover:bg-white/10">What are they doing?</button>
+                            <button onclick="checkAnswer(this, 1)" class="quiz-btn p-4 rounded-lg bg-white/5 hover:bg-white/10">What are you doing?</button>
+                            <button onclick="checkAnswer(this, 2)" class="quiz-btn p-4 rounded-lg bg-white/5 hover:bg-white/10">Where are you going?</button>
+                            <button onclick="checkAnswer(this, 3)" class="quiz-btn p-4 rounded-lg bg-white/5 hover:bg-white/10">Who are you with?</button>
+                        </div>
+                    </div>
+
+                    <div class="question-block" data-correct="0">
+                        <p class="text-xl mb-4">7. Being "Broke" means you have no:</p>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <button onclick="checkAnswer(this, 0)" class="quiz-btn p-4 rounded-lg bg-white/5 hover:bg-white/10">Money</button>
+                            <button onclick="checkAnswer(this, 1)" class="quiz-btn p-4 rounded-lg bg-white/5 hover:bg-white/10">Bones</button>
+                            <button onclick="checkAnswer(this, 2)" class="quiz-btn p-4 rounded-lg bg-white/5 hover:bg-white/10">Time</button>
+                            <button onclick="checkAnswer(this, 3)" class="quiz-btn p-4 rounded-lg bg-white/5 hover:bg-white/10">Car</button>
+                        </div>
+                    </div>
+
+                    <div class="question-block" data-correct="3">
+                        <p class="text-xl mb-4">8. "Kinda" is short for:</p>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <button onclick="checkAnswer(this, 0)" class="quiz-btn p-4 rounded-lg bg-white/5 hover:bg-white/10">Kind king</button>
+                            <button onclick="checkAnswer(this, 1)" class="quiz-btn p-4 rounded-lg bg-white/5 hover:bg-white/10">Can do</button>
+                            <button onclick="checkAnswer(this, 2)" class="quiz-btn p-4 rounded-lg bg-white/5 hover:bg-white/10">King of</button>
+                            <button onclick="checkAnswer(this, 3)" class="quiz-btn p-4 rounded-lg bg-white/5 hover:bg-white/10">Kind of</button>
+                        </div>
                     </div>
                 </div>
-
-                <div class="quiz-block bg-black/10 p-6 rounded-xl border border-white/5">
-                    <p class="text-xl mb-4">2. What happens to a tissue when you say the letter "P" correctly?</p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                        <button class="quiz-option text-left p-3 rounded border border-white/20 transition-all">A) It stays still</button>
-                        <button class="quiz-option text-left p-3 rounded border border-white/20 transition-all">B) It burns</button>
-                        <button class="quiz-option text-left p-3 rounded border border-white/20 transition-all">C) It moves from the air blast</button>
-                        <button class="quiz-option text-left p-3 rounded border border-white/20 transition-all">D) You drop it</button>
-                    </div>
-                </div>
-
-                <div class="quiz-block bg-black/10 p-6 rounded-xl border border-white/5">
-                    <p class="text-xl mb-4">3. Which Classroom Action Word means "Say it again"?</p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                        <button class="quiz-option text-left p-3 rounded border border-white/20 transition-all">A) Loud</button>
-                        <button class="quiz-option text-left p-3 rounded border border-white/20 transition-all">B) Fast</button>
-                        <button class="quiz-option text-left p-3 rounded border border-white/20 transition-all">C) Repeat</button>
-                        <button class="quiz-option text-left p-3 rounded border border-white/20 transition-all">D) Listen</button>
-                    </div>
-                </div>
-
-                </div>
-            
-            <div class="text-center mt-12">
-                <button onclick="alert('Congratulations! Your results have been recorded.')" class="bg-gold text-maroon font-bold py-4 px-12 rounded-full text-xl hover:scale-105 transition-transform">
-                    SUBMIT ANSWERS
-                </button>
             </div>
         </section>
 
     </main>
 
-    <footer class="bg-black/40 py-8 text-center border-t border-gold/20">
-        <p class="text-gray-400">&copy; 2026 North Castle. All Rights Reserved.</p>
+    <footer class="p-8 text-center bg-black/50 text-gray-400 border-t border-yellow-900/30">
+        <p>© 2026 North Castle. All Rights Reserved.</p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({
-            duration: 800,
-            once: true
-        });
+        AOS.init({ duration: 1000, once: true });
 
-        // Prevention of right click
-        document.addEventListener('contextmenu', event => event.preventDefault());
-        
-        // Prevention of keyboard shortcuts for inspecting
-        document.onkeydown = function(e) {
-            if(e.keyCode == 123) { return false; }
-            if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) { return false; }
-            if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) { return false; }
-            if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) { return false; }
-            if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) { return false; }
+        function checkAnswer(btn, index) {
+            const container = btn.closest('.question-block');
+            const correctAnswer = parseInt(container.getAttribute('data-correct'));
+            const buttons = container.querySelectorAll('.quiz-btn');
+            const feedback = document.createElement('p');
+            feedback.className = "mt-4 font-bold text-lg animate-pulse";
+
+            if (index === correctAnswer) {
+                btn.classList.remove('bg-white/5', 'hover:bg-white/10');
+                btn.classList.add('bg-green-600', 'text-white');
+                feedback.innerText = "✓ Correct!";
+                feedback.classList.add('text-green-400');
+            } else {
+                btn.classList.remove('bg-white/5', 'hover:bg-white/10');
+                btn.classList.add('bg-red-600', 'text-white');
+                feedback.innerText = "✗ Incorrect! Keep practicing.";
+                feedback.classList.add('text-red-400');
+            }
+
+            // Disable all buttons in this question
+            buttons.forEach(b => b.disabled = true);
+            container.appendChild(feedback);
         }
+
+        // Prevent copying and keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && (e.key === 'c' || e.key === 'u' || e.key === 'a' || e.key === 's')) {
+                e.preventDefault();
+            }
+        });
     </script>
 </body>
 </html>
