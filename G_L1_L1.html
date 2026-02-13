@@ -4,380 +4,235 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>North Castle | Lecture 1: Street Sounds</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
     <style>
-        :root {
-            --maroon: #500b0b;
-            --gold: #D4AF37;
-            --white: #ffffff;
-            --dark-gold: #b8860b;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-            -webkit-user-select: none; /* Disable text selection */
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
-
         body {
-            background-color: var(--maroon);
-            color: var(--white);
-            line-height: 1.6;
-            overflow-x: hidden;
+            background-color: #500b0b;
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            user-select: none; /* Disable text selection */
         }
-
-        /* Protection - Cursor feedback */
-        body {
-            cursor: default;
-        }
-
-        /* Header & Navbar */
-        nav {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 20px 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 2px solid var(--gold);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-        }
-
-        .brand {
-            color: var(--gold);
-            font-weight: 700;
-            font-size: 1.5rem;
-            letter-spacing: 2px;
-        }
-
-        .lecture-num {
-            font-weight: 400;
-            text-transform: uppercase;
-        }
-
-        /* Container */
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-
-        /* Hero Section */
-        .hero {
-            text-align: center;
-            padding: 60px 0;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            color: var(--gold);
-            margin-bottom: 20px;
-        }
-
-        /* Section Styling */
-        section {
-            margin-bottom: 80px;
-        }
-
-        h2 {
-            color: var(--gold);
-            font-size: 2.2rem;
-            margin-bottom: 30px;
-            border-left: 5px solid var(--gold);
-            padding-left: 15px;
-        }
-
-        .content-card {
+        .gold-text { color: #D4AF37; }
+        .gold-bg { background-color: #D4AF37; }
+        .gold-border { border-color: #D4AF37; }
+        
+        .card {
             background: rgba(255, 255, 255, 0.05);
-            padding: 30px;
-            border-radius: 15px;
             border: 1px solid rgba(212, 175, 55, 0.3);
-            margin-bottom: 30px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #D4AF37;
         }
 
-        /* Images with Gold Borders & Hover Zoom */
-        .img-container {
-            width: 100%;
-            border: 3px solid var(--gold);
-            border-radius: 10px;
-            overflow: hidden;
-            margin-bottom: 20px;
-            transition: transform 0.4s ease;
-        }
-
-        .img-container:hover {
-            transform: scale(1.03);
-        }
-
-        .img-container img {
-            width: 100%;
-            display: block;
-        }
-
-        /* Visual Dictionary Grid */
-        .dictionary-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .dict-card {
-            background: rgba(0,0,0,0.2);
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
-            border-bottom: 3px solid var(--gold);
-        }
-
-        .dict-card h3 {
-            color: var(--gold);
-            margin-top: 10px;
-        }
-
-        /* Quiz Styles */
-        .quiz-container {
-            background: #2a0505;
-            padding: 40px;
-            border-radius: 20px;
-            border: 2px solid var(--gold);
-        }
-
-        .question {
-            margin-bottom: 30px;
-        }
-
-        .options-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-top: 15px;
-        }
-
-        .option-btn {
-            background: transparent;
-            border: 1px solid var(--gold);
-            color: var(--white);
-            padding: 12px;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .option-btn:hover {
-            background: rgba(212, 175, 55, 0.2);
-        }
-
-        .correct {
-            background-color: #28a745 !important;
-            border-color: #28a745 !important;
-        }
-
-        .wrong {
-            background-color: #dc3545 !important;
-            border-color: #dc3545 !important;
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 40px;
-            background: rgba(0,0,0,0.5);
-            border-top: 1px solid var(--gold);
-            margin-top: 50px;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .options-grid { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 2.5rem; }
-        }
+        /* Quiz Feedback */
+        .correct { background-color: #166534 !important; border-color: #22c55e !important; }
+        .wrong { background-color: #991b1b !important; border-color: #ef4444 !important; }
     </style>
 </head>
 <body oncontextmenu="return false;">
 
-    <nav>
-        <div class="brand">NORTH CASTLE</div>
-        <div class="lecture-num">Lecture 1</div>
-    </nav>
+    <header class="p-6 flex justify-between items-center border-b border-yellow-700/30 sticky top-0 bg-[#500b0b] z-50">
+        <h1 class="text-3xl font-black tracking-tighter gold-text">NORTH CASTLE</h1>
+        <div class="text-lg font-mono px-4 py-1 border gold-border rounded-full">Lecture 1</div>
+    </header>
 
-    <div class="container">
-        <section class="hero" data-aos="fade-up">
-            <h1>The Secrets of Pronunciation</h1>
-            <div class="img-container">
-                <img src="https://image.pollinations.ai/prompt/Cinematic_street_photography_of_London_market_with_multicultural_people_talking_wearing_hijab_modest_clothes_warm_lighting_8k?width=800&height=500&nologo=true" alt="Street English Context">
-            </div>
-            <div class="content-card">
-                <h2>The Hook: School vs. Street</h2>
-                <p>Forget what your dusty old textbook told you. In school, they teach you to speak like a robot. In the <strong>Street</strong>, English is alive! It's fast, it's messy, and it's all about rhythm. If you want to sound like a native, you need to stop reading letters and start feeling the vibrations.</p>
+    <main class="max-w-6xl mx-auto px-6 py-12">
+        
+        <section class="text-center mb-20" data-aos="fade-down">
+            <h2 class="text-5xl font-bold mb-6">Alphabet & <span class="gold-text">Street Sounds</span></h2>
+            <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">Master the rhythm of the city. We’re breaking down the Vowels and the P vs B battle. Listen close, talk loud.</p>
+            <div class="flex justify-center">
+                <img src="https://loremflickr.com/800/400/education,talking,students" class="rounded-xl border-4 border-yellow-600 shadow-lg" alt="Education Hero">
             </div>
         </section>
 
-        <section data-aos="fade-up">
-            <h2>Vowels Secret: The Shape Shifters</h2>
-            <div class="dictionary-grid">
-                <div class="content-card">
-                    <h3>Short Vowels</h3>
-                    <p>Think "Cat", "Bed", "Sit". They are quick, sharp, and punchy. No hanging around!</p>
+        <section class="mb-20">
+            <h3 class="text-3xl font-bold mb-10 text-center border-b-2 border-yellow-600 inline-block">The Toolkit</h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="card p-8 rounded-2xl text-center" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fa-solid fa-ear-listen text-yellow-500 text-6xl mb-4"></i>
+                    <p class="text-xl font-bold">Listen</p>
                 </div>
-                <div class="content-card">
-                    <h3>Long Vowels</h3>
-                    <p>Think "Cake", "Sleep", "Light". These vowels take their time. They stretch out like they're on vacation.</p>
+                <div class="card p-8 rounded-2xl text-center" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fa-solid fa-comment-dots text-yellow-500 text-6xl mb-4"></i>
+                    <p class="text-xl font-bold">Speak</p>
                 </div>
-            </div>
-            <div class="img-container">
-                <img src="https://image.pollinations.ai/prompt/Abstract_digital_art_of_glowing_neon_letters_AEIOU_floating_in_dark_crimson_space_gold_highlights_high_resolution?width=800&height=500&nologo=true" alt="Vowels Art">
+                <div class="card p-8 rounded-2xl text-center" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fa-solid fa-lips text-yellow-500 text-6xl mb-4"></i>
+                    <p class="text-xl font-bold">Mouth</p>
+                </div>
+                <div class="card p-8 rounded-2xl text-center" data-aos="fade-up" data-aos-delay="400">
+                    <i class="fa-solid fa-volume-high text-yellow-500 text-6xl mb-4"></i>
+                    <p class="text-xl font-bold">Loud</p>
+                </div>
+                <div class="card p-8 rounded-2xl text-center" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fa-solid fa-brain text-yellow-500 text-6xl mb-4"></i>
+                    <p class="text-xl font-bold">Remember</p>
+                </div>
+                <div class="card p-8 rounded-2xl text-center" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fa-solid fa-bolt text-yellow-500 text-6xl mb-4"></i>
+                    <p class="text-xl font-bold">Fast</p>
+                </div>
+                <div class="card p-8 rounded-2xl text-center" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fa-solid fa-street-view text-yellow-500 text-6xl mb-4"></i>
+                    <p class="text-xl font-bold">Street</p>
+                </div>
+                <div class="card p-8 rounded-2xl text-center" data-aos="fade-up" data-aos-delay="400">
+                    <i class="fa-solid fa-music text-yellow-500 text-6xl mb-4"></i>
+                    <p class="text-xl font-bold">Rhythm</p>
+                </div>
+                <div class="card p-8 rounded-2xl text-center" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fa-solid fa-repeat text-yellow-500 text-6xl mb-4"></i>
+                    <p class="text-xl font-bold">Repeat</p>
+                </div>
+                <div class="card p-8 rounded-2xl text-center" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fa-solid fa-users text-yellow-500 text-6xl mb-4"></i>
+                    <p class="text-xl font-bold">Group</p>
+                </div>
+                <div class="card p-8 rounded-2xl text-center" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fa-solid fa-microphone-lines text-yellow-500 text-6xl mb-4"></i>
+                    <p class="text-xl font-bold">Record</p>
+                </div>
+                <div class="card p-8 rounded-2xl text-center" data-aos="fade-up" data-aos-delay="400">
+                    <i class="fa-solid fa-trophy text-yellow-500 text-6xl mb-4"></i>
+                    <p class="text-xl font-bold">Win</p>
+                </div>
             </div>
         </section>
 
-        <section data-aos="fade-up">
-            <h2>The Trap: P vs. B</h2>
-            <p>This is where most students get caught. The difference is just a puff of air!</p>
-            <div class="dictionary-grid">
-                <div class="dict-card">
-                    <div class="img-container">
-                        <img src="https://image.pollinations.ai/prompt/A_beautiful_city_park_with_green_trees_and_a_bench_golden_hour_serene_atmosphere?width=800&height=500&nologo=true" alt="Park">
+        <section class="grid md:grid-cols-2 gap-12 mb-20">
+            <div class="bg-black/20 p-8 rounded-3xl border-l-8 gold-border" data-aos="fade-right">
+                <h3 class="text-3xl font-bold mb-4 gold-text">1. The Vowel Flow</h3>
+                <p class="mb-4">In the street, vowels aren't just letters; they are the breath of the word.</p>
+                <ul class="space-y-4">
+                    <li class="flex items-center gap-4"><span class="text-3xl font-bold gold-text">A</span> - Apple / At</li>
+                    <li class="flex items-center gap-4"><span class="text-3xl font-bold gold-text">E</span> - Egg / End</li>
+                    <li class="flex items-center gap-4"><span class="text-3xl font-bold gold-text">I</span> - Igloo / It</li>
+                    <li class="flex items-center gap-4"><span class="text-3xl font-bold gold-text">O</span> - Octopus / On</li>
+                    <li class="flex items-center gap-4"><span class="text-3xl font-bold gold-text">U</span> - Umbrella / Up</li>
+                </ul>
+            </div>
+
+            <div class="bg-black/20 p-8 rounded-3xl border-l-8 gold-border" data-aos="fade-left">
+                <h3 class="text-3xl font-bold mb-4 gold-text">2. The P vs B Battle</h3>
+                <p class="mb-4 text-gray-300">This is where most people trip up. It's all about the <span class="italic">air</span>.</p>
+                <div class="space-y-6">
+                    <div>
+                        <span class="font-bold text-xl gold-text underline">P (The Pop):</span>
+                        <p>No voice. Put a tissue in front of your mouth. It should move! <br><strong>"Pat", "Push", "Stop".</strong></p>
                     </div>
-                    <h3>P is for PARK</h3>
-                    <p>Hold a tissue in front of your mouth. Say "Park". The tissue <strong>must</strong> move! (Unvoiced air).</p>
-                </div>
-                <div class="dict-card">
-                    <div class="img-container">
-                        <img src="https://image.pollinations.ai/prompt/A_large_friendly_golden_retriever_dog_barking_joyfully_in_a_garden_sunny_day?width=800&height=500&nologo=true" alt="Bark">
+                    <div>
+                        <span class="font-bold text-xl gold-text underline">B (The Buzz):</span>
+                        <p>Use your throat. Feel the vibration. <br><strong>"Bat", "Bush", "Rob".</strong></p>
                     </div>
-                    <h3>B is for BARK</h3>
-                    <p>Touch your throat. Say "Bark". You should feel a <strong>buzz</strong>. (Voiced sound).</p>
                 </div>
             </div>
         </section>
 
-        <section data-aos="fade-up">
-            <h2>Visual Dictionary</h2>
-            <div class="dictionary-grid">
-                <div class="dict-card">
-                    <img src="https://image.pollinations.ai/prompt/Close_up_of_a_woman_wearing_a_hijab_speaking_into_a_vintage_microphone_gold_accents?width=800&height=500&nologo=true" style="width:100%; border-radius:10px;">
-                    <h3>Voice</h3>
-                </div>
-                <div class="dict-card">
-                    <img src="https://image.pollinations.ai/prompt/Extreme_close_up_of_human_mouth_lips_parted_forming_the_letter_O_high_detail_artistic?width=800&height=500&nologo=true" style="width:100%; border-radius:10px;">
-                    <h3>Mouth</h3>
-                </div>
-                <div class="dict-card">
-                    <img src="https://image.pollinations.ai/prompt/A_golden_megaphone_blasting_visible_sound_waves_against_a_dark_background?width=800&height=500&nologo=true" style="width:100%; border-radius:10px;">
-                    <h3>Loud</h3>
-                </div>
-                <div class="dict-card">
-                    <img src="https://image.pollinations.ai/prompt/Two_women_in_modest_clothing_and_hijab_whispering_secrets_to_each_other_soft_lighting?width=800&height=500&nologo=true" style="width:100%; border-radius:10px;">
-                    <h3>Whisper</h3>
-                </div>
-                <div class="dict-card">
-                    <img src="https://image.pollinations.ai/prompt/Stylized_human_ear_listening_to_floating_musical_notes_and_golden_spirals?width=800&height=500&nologo=true" style="width:100%; border-radius:10px;">
-                    <h3>Listen</h3>
-                </div>
-                <div class="dict-card">
-                    <img src="https://image.pollinations.ai/prompt/Grand_canyon_landscape_with_visible_concentric_circles_representing_sound_echoes?width=800&height=500&nologo=true" style="width:100%; border-radius:10px;">
-                    <h3>Echo</h3>
-                </div>
-                <div class="dict-card">
-                    <img src="https://image.pollinations.ai/prompt/Two_friends_sitting_in_a_cafe_talking_wearing_modest_clothes_and_hijab_happy_mood?width=800&height=500&nologo=true" style="width:100%; border-radius:10px;">
-                    <h3>Talk</h3>
-                </div>
-                <div class="dict-card">
-                    <img src="https://image.pollinations.ai/prompt/A_person_standing_on_a_mountain_peak_shouting_with_hands_around_mouth_modest_clothing?width=800&height=500&nologo=true" style="width:100%; border-radius:10px;">
-                    <h3>Shout</h3>
-                </div>
-                <div class="dict-card">
-                    <img src="https://image.pollinations.ai/prompt/Macro_illustration_of_a_human_tongue_showing_taste_buds_and_muscle_detail?width=800&height=500&nologo=true" style="width:100%; border-radius:10px;">
-                    <h3>Tongue</h3>
-                </div>
-                <div class="dict-card">
-                    <img src="https://image.pollinations.ai/prompt/Close_up_of_smiling_lips_with_natural_expression_warm_lighting_artistic_composition?width=800&height=500&nologo=true" style="width:100%; border-radius:10px;">
-                    <h3>Lips</h3>
-                </div>
-                <div class="dict-card">
-                    <img src="https://image.pollinations.ai/prompt/Abstract_representation_of_city_noise_with_distorted_lines_and_dark_colors?width=800&height=500&nologo=true" style="width:100%; border-radius:10px;">
-                    <h3>Noise</h3>
-                </div>
-                <div class="dict-card">
-                    <img src="https://image.pollinations.ai/prompt/A_solitary_candle_burning_in_a_pitch_black_room_representing_silence_and_calm?width=800&height=500&nologo=true" style="width:100%; border-radius:10px;">
-                    <h3>Silence</h3>
-                </div>
-            </div>
-        </section>
-
-        <section data-aos="fade-up" id="quiz">
-            <h2>Check Your Skills</h2>
-            <div class="quiz-container">
-                <div id="quiz-box">
+        <section class="mb-20">
+            <h3 class="text-4xl font-bold mb-10 text-center">Challenge Your Ears</h3>
+            <div id="quiz" class="space-y-6 max-w-3xl mx-auto">
+                <div class="card p-6 rounded-xl" data-aos="fade-up">
+                    <p class="text-lg mb-4 italic">"Which letter makes a 'pop' of air?"</p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <button onclick="check(this, true)" class="p-3 bg-white/10 rounded hover:bg-white/20 border gold-border">P</button>
+                        <button onclick="check(this, false)" class="p-3 bg-white/10 rounded hover:bg-white/20 border gold-border">B</button>
                     </div>
+                </div>
+                <div class="card p-6 rounded-xl" data-aos="fade-up">
+                    <p class="text-lg mb-4 italic">"Which sound uses your vocal cords?"</p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <button onclick="check(this, false)" class="p-3 bg-white/10 rounded hover:bg-white/20 border gold-border">P</button>
+                        <button onclick="check(this, true)" class="p-3 bg-white/10 rounded hover:bg-white/20 border gold-border">B</button>
+                    </div>
+                </div>
+                <div class="card p-6 rounded-xl" data-aos="fade-up">
+                    <p class="text-lg mb-4 italic">"Finish the vowel set: A, E, I, O, ___"</p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <button onclick="check(this, true)" class="p-3 bg-white/10 rounded hover:bg-white/20 border gold-border">U</button>
+                        <button onclick="check(this, false)" class="p-3 bg-white/10 rounded hover:bg-white/20 border gold-border">Y</button>
+                    </div>
+                </div>
+                <div class="card p-6 rounded-xl" data-aos="fade-up">
+                    <p class="text-lg mb-4 italic">"Is 'Apple' a long or short A sound?"</p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <button onclick="check(this, true)" class="p-3 bg-white/10 rounded hover:bg-white/20 border gold-border">Short</button>
+                        <button onclick="check(this, false)" class="p-3 bg-white/10 rounded hover:bg-white/20 border gold-border">Long</button>
+                    </div>
+                </div>
+                <div class="card p-6 rounded-xl" data-aos="fade-up">
+                    <p class="text-lg mb-4 italic">"Pick the word that starts with B:"</p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <button onclick="check(this, false)" class="p-3 bg-white/10 rounded hover:bg-white/20 border gold-border">Park</button>
+                        <button onclick="check(this, true)" class="p-3 bg-white/10 rounded hover:bg-white/20 border gold-border">Bark</button>
+                    </div>
+                </div>
+                <div class="card p-6 rounded-xl" data-aos="fade-up">
+                    <p class="text-lg mb-4 italic">"Which word ends with the 'P' sound?"</p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <button onclick="check(this, true)" class="p-3 bg-white/10 rounded hover:bg-white/20 border gold-border">Stop</button>
+                        <button onclick="check(this, false)" class="p-3 bg-white/10 rounded hover:bg-white/20 border gold-border">Rob</button>
+                    </div>
+                </div>
+                <div class="card p-6 rounded-xl" data-aos="fade-up">
+                    <p class="text-lg mb-4 italic">"The vowel 'O' in 'On' is..."</p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <button onclick="check(this, true)" class="p-3 bg-white/10 rounded hover:bg-white/20 border gold-border">Short</button>
+                        <button onclick="check(this, false)" class="p-3 bg-white/10 rounded hover:bg-white/20 border gold-border">A Number</button>
+                    </div>
+                </div>
+                <div class="card p-6 rounded-xl" data-aos="fade-up">
+                    <p class="text-lg mb-4 italic">"Street English is mostly about..."</p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <button onclick="check(this, false)" class="p-3 bg-white/10 rounded hover:bg-white/20 border gold-border">Grammar Rules</button>
+                        <button onclick="check(this, true)" class="p-3 bg-white/10 rounded hover:bg-white/20 border gold-border">Rhythm & Sound</button>
+                    </div>
+                </div>
             </div>
         </section>
-    </div>
+    </main>
 
-    <footer>
-        <p>© 2026 North Castle. All Rights Reserved.</p>
+    <footer class="p-10 border-t border-yellow-700/30 text-center opacity-70">
+        <p class="mb-2">© 2026 North Castle. All Rights Reserved.</p>
+        <div class="flex justify-center gap-6">
+            <i class="fa-brands fa-instagram text-2xl"></i>
+            <i class="fa-brands fa-tiktok text-2xl"></i>
+            <i class="fa-brands fa-youtube text-2xl"></i>
+        </div>
     </footer>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1000, once: true });
-
-        // Quiz Data
-        const quizData = [
-            { q: "What is the main focus of 'Street English'?", a: ["Perfect Grammar", "Rhythm and Sounds", "Writing Essays", "Old Vocabulary"], correct: 1 },
-            { q: "Which word has a 'Long Vowel' sound?", a: ["Cat", "Sit", "Cake", "Bed"], correct: 2 },
-            { q: "When you say the letter 'P' in 'Park', what should happen?", a: ["Throat vibrates", "No air comes out", "A puff of air comes out", "Your eyes close"], correct: 2 },
-            { q: "What sound does your throat make when saying 'B' in 'Bark'?", a: ["Silence", "A buzz/vibration", "A whistling sound", "No sound"], correct: 1 },
-            { q: "Which word means a sound that bounces back to you?", a: ["Whisper", "Noise", "Echo", "Shout"], correct: 2 },
-            { q: "In the Visual Dictionary, which word represents the absence of sound?", a: ["Silence", "Loud", "Voice", "Talk"], correct: 0 },
-            { q: "Short vowels are usually...", a: ["Stretched and long", "Quick and punchy", "Only used in 'Park'", "Silent"], correct: 1 },
-            { q: "Why is 'School English' different?", a: ["It's too fast", "It's often too formal and robotic", "It uses more gold", "It's only for adults"], correct: 1 }
-        ];
-
-        function loadQuiz() {
-            const quizBox = document.getElementById('quiz-box');
-            quizBox.innerHTML = quizData.map((item, index) => `
-                <div class="question">
-                    <p><strong>${index + 1}. ${item.q}</strong></p>
-                    <div class="options-grid">
-                        ${item.a.map((opt, i) => `
-                            <button class="option-btn" onclick="checkAnswer(this, ${i}, ${item.correct})">${opt}</button>
-                        `).join('')}
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function checkAnswer(btn, selected, correct) {
-            const parent = btn.parentElement;
-            const buttons = parent.querySelectorAll('.option-btn');
-            
-            // Disable all buttons in this question
-            buttons.forEach(b => b.style.pointerEvents = 'none');
-
-            if (selected === correct) {
-                btn.classList.add('correct');
-            } else {
-                btn.classList.add('wrong');
-                buttons[correct].classList.add('correct');
-            }
-        }
-
-        // Disable Copy & Shortcuts
-        document.addEventListener('keydown', function(e) {
-            if (e.ctrlKey && (e.keyCode === 67 || e.keyCode === 85 || e.keyCode === 83)) {
-                e.preventDefault();
-            }
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true
         });
 
-        loadQuiz();
+        // Quiz Logic
+        function check(btn, isCorrect) {
+            const parent = btn.parentElement;
+            const buttons = parent.querySelectorAll('button');
+            
+            // Disable all buttons in this question
+            buttons.forEach(b => b.disabled = true);
+            
+            if(isCorrect) {
+                btn.classList.add('correct');
+                btn.innerHTML += ' <i class="fa-solid fa-check-circle ml-2"></i>';
+            } else {
+                btn.classList.add('wrong');
+                btn.innerHTML += ' <i class="fa-solid fa-xmark-circle ml-2"></i>';
+            }
+        }
     </script>
 </body>
 </html>
