@@ -3,407 +3,347 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Street English | Lecture 1: Secrets of Sounds</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Lecture 1: Alphabet & Street Sounds | North Castle</title>
     
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
         :root {
             --maroon: #800000;
             --gold: #FFD700;
             --white: #FFFFFF;
-            --darker-maroon: #600000;
+            --dark-gold: #b8860b;
         }
 
         body {
             background-color: var(--maroon);
             color: var(--white);
-            font-family: 'Montserrat', sans-serif;
-            line-height: 1.6;
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
         }
 
         /* Typography */
-        h1, h2, h3 {
-            font-weight: 900;
-            text-transform: uppercase;
-            color: var(--gold);
-        }
-
-        .text-gold { color: var(--gold) !important; }
-
+        h1, h2, h3 { font-weight: 800; text-transform: uppercase; letter-spacing: 2px; }
+        .gold-text { color: var(--gold); }
+        
         /* Branding Header */
-        header {
-            padding: 40px 20px;
-            text-align: center;
-            border-bottom: 3px solid var(--gold);
-            background-color: var(--darker-maroon);
-        }
-
-        .brand-name {
+        .branding-top {
             font-size: 1.2rem;
-            letter-spacing: 4px;
-            margin-bottom: 5px;
+            letter-spacing: 5px;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
         }
 
-        /* Cards & Sections */
-        .content-section {
-            padding: 60px 0;
+        .hero-section {
+            padding: 80px 0;
+            text-align: center;
+            background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(128,0,0,1) 100%);
         }
 
-        .glass-card {
+        /* Cards Style */
+        .edu-card {
             background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 215, 0, 0.3);
+            border: 1px solid rgba(255, 215, 0, 0.1);
             border-radius: 15px;
-            padding: 25px;
+            padding: 30px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             height: 100%;
-            transition: transform 0.3s ease;
+            cursor: pointer;
         }
 
-        .glass-card:hover {
-            transform: translateY(-5px);
+        .edu-card:hover {
+            transform: scale(1.05) translateY(-10px);
+            background: rgba(255, 255, 255, 0.1);
             border-color: var(--gold);
+            box-shadow: 0 15px 30px rgba(255, 215, 0, 0.2);
         }
 
-        /* Tables */
-        .table {
-            color: var(--white);
-            border-color: var(--gold);
-        }
-
-        .table thead th {
+        .edu-card i {
+            font-size: 3rem;
             color: var(--gold);
-            border-bottom: 2px solid var(--gold);
+            margin-bottom: 20px;
         }
 
-        /* Buttons */
-        .btn-gold {
+        /* Vowels Section */
+        .vowel-badge {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--gold);
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        /* Quiz Styling */
+        .quiz-container {
+            background: #222;
+            border: 3px solid var(--gold);
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 50px;
+        }
+
+        .btn-check:checked + .btn-outline-gold {
             background-color: var(--gold);
             color: var(--maroon);
-            font-weight: 700;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 50px;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
         }
 
-        .btn-gold:hover {
-            background-color: var(--white);
-            color: var(--maroon);
-            transform: scale(1.05);
-        }
-
-        /* Quiz Styles */
-        .quiz-option {
-            background: transparent;
-            border: 2px solid var(--gold);
-            color: var(--white);
-            margin-bottom: 10px;
+        .btn-outline-gold {
+            border-color: var(--gold);
+            color: var(--gold);
+            margin: 5px;
+            width: 100%;
             text-align: left;
-            transition: 0.2s;
+            padding: 15px;
         }
 
-        .quiz-option:hover, .quiz-option.active {
+        .btn-outline-gold:hover {
             background-color: var(--gold);
             color: var(--maroon);
         }
 
         footer {
-            background-color: var(--darker-maroon);
-            padding: 30px;
+            padding: 40px 0;
+            border-top: 1px solid rgba(255, 215, 0, 0.2);
+            margin-top: 80px;
             text-align: center;
-            border-top: 1px solid var(--gold);
-            margin-top: 50px;
         }
 
-        .icon-box {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            color: var(--gold);
+        /* Animations */
+        @keyframes glow {
+            from { text-shadow: 0 0 5px #fff, 0 0 10px var(--gold); }
+            to { text-shadow: 0 0 10px #fff, 0 0 20px var(--gold); }
         }
+
+        .glow-title { animation: glow 2s ease-in-out infinite alternate; }
     </style>
 </head>
 <body>
 
-    <header>
+    <div class="container-fluid branding-top text-center">
+        NORTH CASTLE
+    </div>
+
+    <header class="hero-section">
         <div class="container">
-            <div class="brand-name">NORTH CASTLE</div>
-            <h1 class="display-4">STREET ENGLISH</h1>
-            <p class="lead text-gold mb-0">Lecture 1: Secrets of Sounds (Alphabet & Street Sounds)</p>
+            <h1 class="display-1 glow-title">STREET ENGLISH</h1>
+            <p class="lead gold-text">Lecture 1: The Alphabet & Street Sounds</p>
+            <div class="mt-4">
+                <i class="fa-solid fa-ear-listen mx-3 fa-2x"></i>
+                <i class="fa-solid fa-mouth-high-lighting mx-3 fa-2x"></i>
+                <i class="fa-solid fa-microphone-lines mx-3 fa-2x"></i>
+            </div>
         </div>
     </header>
 
-    <main class="container my-5">
-
-        <section class="content-section text-center">
-            <div class="icon-box">
-                <i class="fa-solid fa-ear-listen"></i>
+    <section class="container my-5 py-5">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h2 class="gold-text mb-4">The Alphabet <br>vs. The Street</h2>
+                <p class="fs-5">In the classroom, you learn the <strong>"Names"</strong> of letters. But on the street, people don't talk in names; they talk in <strong>"Sounds"</strong>.</p>
+                <p>Think of it like a person: Their name is 'A', but their voice is '/æ/'. To master Street English, we must stop reading and start listening.</p>
             </div>
-            <h2>The Core Rule</h2>
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <p class="fs-4">English is a language of <span class="text-gold fw-bold">SOUNDS</span>, not Letters.</p>
-                    <p>In many languages, you say what you see. In English, letters are just "costumes." To speak like a local, you must train your ears to hear the vibrations, not just read the alphabet.</p>
-                </div>
-            </div>
-        </section>
-
-        <hr class="border-gold">
-
-        <section class="content-section">
-            <h2 class="text-center mb-5"><i class="fa-solid fa-eye me-3"></i>The Optical Illusion (Vowels)</h2>
-            <div class="table-responsive">
-                <table class="table table-bordered align-middle text-center">
-                    <thead>
-                        <tr>
-                            <th>Vowel</th>
-                            <th>Short Sound (Quick)</th>
-                            <th>Long Sound (Alphabet Name)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="fw-bold text-gold fs-3">A</td>
-                            <td><strong>Apple</strong> /æ/</td>
-                            <td><strong>Ape</strong> /eɪ/</td>
-                        </tr>
-                        <tr>
-                            <td class="fw-bold text-gold fs-3">E</td>
-                            <td><strong>Bed</strong> /ɛ/</td>
-                            <td><strong>Bee</strong> /i/</td>
-                        </tr>
-                        <tr>
-                            <td class="fw-bold text-gold fs-3">I</td>
-                            <td><strong>Ship</strong> /ɪ/</td>
-                            <td><strong>Sheet</strong> /i/</td>
-                        </tr>
-                        <tr>
-                            <td class="fw-bold text-gold fs-3">O</td>
-                            <td><strong>Hot</strong> /ɒ/</td>
-                            <td><strong>Hope</strong> /oʊ/</td>
-                        </tr>
-                        <tr>
-                            <td class="fw-bold text-gold fs-3">U</td>
-                            <td><strong>Cut</strong> /ʌ/</td>
-                            <td><strong>Cute</strong> /ju/</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <section class="content-section">
-            <div class="row g-4 align-items-center">
-                <div class="col-md-6">
-                    <h2><i class="fa-solid fa-industry me-3"></i>The Sound Factory</h2>
-                    <p>Your mouth is a machine. Different sounds come from different "stations":</p>
-                    <ul class="list-unstyled">
-                        <li class="mb-3"><i class="fa-solid fa-check text-gold me-2"></i> <strong>Throat Sounds (G, K):</strong> Feel the vibration at the back of your tongue.</li>
-                        <li class="mb-3"><i class="fa-solid fa-check text-gold me-2"></i> <strong>Lip Sounds (P, B):</strong> Use air pressure to "pop" the sound.</li>
-                    </ul>
-                    <div class="p-3 border border-gold rounded">
-                        <p class="mb-0"><i class="fa-solid fa-mirror me-2 text-gold"></i> <strong>Pro Tip:</strong> Stand in front of a <strong>mirror</strong>. If your lips don't move for 'P' and 'B', you aren't saying them right!</p>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="glass-card text-center">
-                        <i class="fa-solid fa-vocal-softness icon-box"></i>
-                        <h3>Vibration Check</h3>
-                        <p>Place two fingers on your throat. Say "BZZZZ". Feel that? That is a <strong>Voiced</strong> sound. Now say "SSSSS". No vibration? That is <strong>Unvoiced</strong>.</p>
-                    </div>
+            <div class="col-md-3">
+                <div class="edu-card text-center">
+                    <i class="fa-solid fa-ear-listen"></i>
+                    <h4>Listen</h4>
+                    <p>Focus on the vibration and air.</p>
                 </div>
             </div>
-        </section>
+            <div class="col-md-3">
+                <div class="edu-card text-center">
+                    <i class="fa-solid fa-comment-dots"></i>
+                    <h4>Speak</h4>
+                    <p>Copy the "Street" rhythm.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <section class="content-section">
-            <h2 class="text-center mb-5">Minimal Pairs Challenge</h2>
-            <div class="row g-4">
-                <div class="col-6 col-md-3">
-                    <div class="glass-card text-center">
-                        <span class="d-block text-gold fw-bold">P vs B</span>
-                        <p class="small">Pat / Bat</p>
+    <section class="container my-5">
+        <h2 class="text-center gold-text mb-5">The Sound Gallery</h2>
+        <div class="row g-4">
+            <div class="col-md-4 col-lg-3">
+                <div class="edu-card text-center">
+                    <span class="display-4 fw-bold gold-text">A</span>
+                    <i class="fa-solid fa-apple-whole mt-3"></i>
+                    <h5>Street: /æ/</h5>
+                    <p class="small">Open your mouth wide like you're biting an apple. Flat tongue.</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-3">
+                <div class="edu-card text-center">
+                    <span class="display-4 fw-bold gold-text">B</span>
+                    <i class="fa-solid fa-drum mt-3"></i>
+                    <h5>Street: /b/</h5>
+                    <p class="small">An explosive sound. Press lips together and release with a voice vibration.</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-3">
+                <div class="edu-card text-center">
+                    <span class="display-4 fw-bold gold-text">K</span>
+                    <i class="fa-solid fa-key mt-3"></i>
+                    <h5>Street: /k/</h5>
+                    <p class="small">Push a sharp puff of air from the back of your throat. No voice!</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-3">
+                <div class="edu-card text-center">
+                    <span class="display-4 fw-bold gold-text">S</span>
+                    <i class="fa-solid fa-snake mt-3"></i>
+                    <h5>Street: /s/</h5>
+                    <p class="small">Hiss like a snake. Air passes through your teeth. No throat vibration.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container-fluid my-5 py-5" style="background: rgba(0,0,0,0.3);">
+        <div class="container">
+            <h2 class="text-center gold-text mb-5">The Vowel Optical Illusion</h2>
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="text-center mb-5">Vowels are the "engines" of words. They change everything.</p>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="edu-card">
+                        <h3 class="gold-text"><i class="fa-solid fa-compress-arrows-alt me-3"></i>Short Vowels</h3>
+                        <p>Quick and clipped sounds. Found in words like <em>Cat, Bed, Sit, Hot, Sun</em>.</p>
                     </div>
                 </div>
-                <div class="col-6 col-md-3">
-                    <div class="glass-card text-center">
-                        <span class="d-block text-gold fw-bold">I vs EE</span>
-                        <p class="small">Sit / Seat</p>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="glass-card text-center">
-                        <span class="d-block text-gold fw-bold">S vs SH</span>
-                        <p class="small">Sip / Ship</p>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="glass-card text-center">
-                        <span class="d-block text-gold fw-bold">F vs V</span>
-                        <p class="small">Fan / Van</p>
+                <div class="col-md-6 mb-4">
+                    <div class="edu-card">
+                        <h3 class="gold-text"><i class="fa-solid fa-expand-arrows-alt me-3"></i>Long Vowels</h3>
+                        <p>The vowel says its own name. Found in words like <em>Cake, Keep, Bike, Home, Cute</em>.</p>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <hr class="border-gold">
-
-        <section class="content-section" id="quiz-area">
-            <div class="text-center mb-5">
-                <h2><i class="fa-solid fa-crown me-3"></i>The Royal Quiz</h2>
-                <p>Test your street knowledge below!</p>
-            </div>
-
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <form id="quizForm">
-                        <div class="mb-4">
-                            <p class="fw-bold">1. English is primarily about _____?</p>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="q1" value="wrong" id="q1a">
-                                <label class="form-check-label" for="q1a">The way words are spelled</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="q1" value="correct" id="q1b">
-                                <label class="form-check-label" for="q1b">The way sounds are produced</label>
-                            </div>
-                        </div>
-
-                        <div class="mb-4">
-                            <p class="fw-bold">2. Which word has a LONG 'A' sound?</p>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="q2" value="wrong" id="q2a">
-                                <label class="form-check-label" for="q2a">Apple</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="q2" value="correct" id="q2b">
-                                <label class="form-check-label" for="q2b">Cake</label>
-                            </div>
-                        </div>
-
-                        <div class="mb-4">
-                            <p class="fw-bold">3. 'P' and 'B' are known as _____ sounds.</p>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="q3" value="correct" id="q3a">
-                                <label class="form-check-label" for="q3a">Lip Sounds</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="q3" value="wrong" id="q3b">
-                                <label class="form-check-label" for="q3b">Throat Sounds</label>
-                            </div>
-                        </div>
-
-                        <div class="mb-4">
-                            <p class="fw-bold">4. Which sound requires throat vibration (Voiced)?</p>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="q4" value="correct" id="q4a">
-                                <label class="form-check-label" for="q4a">B</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="q4" value="wrong" id="q4b">
-                                <label class="form-check-label" for="q4b">P</label>
-                            </div>
-                        </div>
-
-                        <div class="mb-4">
-                            <p class="fw-bold">5. 'Sheet' vs 'Ship' is an example of _____.</p>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="q5" value="correct" id="q5a">
-                                <label class="form-check-label" for="q5a">Minimal Pairs</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="q5" value="wrong" id="q5b">
-                                <label class="form-check-label" for="q5b">Maximal Sounds</label>
-                            </div>
-                        </div>
-
-                        <div class="mb-4">
-                            <p class="fw-bold">6. What should you use to check your mouth movements?</p>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="q6" value="wrong" id="q6a">
-                                <label class="form-check-label" for="q6a">A book</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="q6" value="correct" id="q6b">
-                                <label class="form-check-label" for="q6b">A mirror</label>
-                            </div>
-                        </div>
-
-                        <div class="mb-4">
-                            <p class="fw-bold">7. The word 'Cut' uses which vowel sound?</p>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="q7" value="correct" id="q7a">
-                                <label class="form-check-label" for="q7a">Short U</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="q7" value="wrong" id="q7b">
-                                <label class="form-check-label" for="q7b">Long U</label>
-                            </div>
-                        </div>
-
-                        <div class="mb-4">
-                            <p class="fw-bold">8. Which of these is a 'Throat Sound'?</p>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="q8" value="wrong" id="q8a">
-                                <label class="form-check-label" for="q8a">M</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="q8" value="correct" id="q8b">
-                                <label class="form-check-label" for="q8b">G</label>
-                            </div>
-                        </div>
-
-                        <div class="text-center mt-5">
-                            <button type="button" class="btn btn-gold px-5" onclick="checkQuiz()">
-                                <i class="fa-solid fa-crown me-2"></i> Check Results
-                            </button>
-                        </div>
-                    </form>
-                    <div id="quizResult" class="mt-4 text-center fs-3 fw-bold"></div>
+    <section class="container my-5 py-5">
+        <h2 class="text-center gold-text mb-5">The Sound Factory</h2>
+        <div class="row g-5">
+            <div class="col-md-6">
+                <div class="p-4 border border-warning rounded-4">
+                    <h3 class="text-center"><i class="fa-solid fa-wind me-3"></i>Unvoiced (Air)</h3>
+                    <p class="text-center">Touch your throat. It should <strong>NOT</strong> vibrate.</p>
+                    <hr class="bg-gold">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="display-6">P</span>
+                        <i class="fa-solid fa-arrow-right-long"></i>
+                        <span class="fs-4">Pure Air (Puff)</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <span class="display-6">S</span>
+                        <i class="fa-solid fa-arrow-right-long"></i>
+                        <span class="fs-4">Hissing Air</span>
+                    </div>
                 </div>
             </div>
-        </section>
+            <div class="col-md-6">
+                <div class="p-4 border border-warning rounded-4">
+                    <h3 class="text-center"><i class="fa-solid fa-volume-high me-3"></i>Voiced (Throat)</h3>
+                    <p class="text-center">Touch your throat. It <strong>MUST</strong> vibrate.</p>
+                    <hr class="bg-gold">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="display-6">B</span>
+                        <i class="fa-solid fa-arrow-right-long"></i>
+                        <span class="fs-4">Vibrating Explosion</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <span class="display-6">Z</span>
+                        <i class="fa-solid fa-arrow-right-long"></i>
+                        <span class="fs-4">Buzzing Bee</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    </main>
+    <section class="container my-5">
+        <h2 class="text-center gold-text mb-5">Minimal Pairs: The Street Traps</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="edu-card mb-3">
+                    <div class="row align-items-center text-center">
+                        <div class="col-5"><h4>Ship <i class="fa-solid fa-ship d-block mt-2"></i></h4><small>/ɪ/ (Short)</small></div>
+                        <div class="col-2 gold-text fs-2">VS</div>
+                        <div class="col-5"><h4>Sheep <i class="fa-solid fa-cloud d-block mt-2"></i></h4><small>/i:/ (Long)</small></div>
+                    </div>
+                </div>
+                <div class="edu-card">
+                    <div class="row align-items-center text-center">
+                        <div class="col-5"><h4>Fan <i class="fa-solid fa-fan d-block mt-2"></i></h4><small>/f/ (Unvoiced)</small></div>
+                        <div class="col-2 gold-text fs-2">VS</div>
+                        <div class="col-5"><h4>Van <i class="fa-solid fa-van-shuttle d-block mt-2"></i></h4><small>/v/ (Voiced)</small></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container my-5 pb-5">
+        <div class="quiz-container">
+            <h2 class="text-center gold-text mb-4">The Royal Quiz</h2>
+            <div id="quiz">
+                <div class="quiz-step mb-5" id="q1">
+                    <h4 class="mb-3">1. Which sound requires your throat to vibrate?</h4>
+                    <button class="btn btn-outline-gold" onclick="checkAnswer(1, 'B')">A) The /s/ in "Snake"</button>
+                    <button class="btn btn-outline-gold" onclick="checkAnswer(1, 'G')">B) The /z/ in "Zebra"</button>
+                    <p id="feedback1" class="mt-2"></p>
+                </div>
+
+                <div class="quiz-step mb-5" id="q2">
+                    <h4 class="mb-3">2. In the word "Cake", the 'a' is a...</h4>
+                    <button class="btn btn-outline-gold" onclick="checkAnswer(2, 'L')">A) Long Vowel</button>
+                    <button class="btn btn-outline-gold" onclick="checkAnswer(2, 'S')">B) Short Vowel</button>
+                    <p id="feedback2" class="mt-2"></p>
+                </div>
+
+                <div class="text-center">
+                    <p class="gold-text">Complete all 8 questions to claim your Street Title!</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <footer>
         <div class="container">
-            <h4 class="text-gold mb-3">NORTH CASTLE</h4>
-            <p class="mb-0">&copy; 2026 North Castle - All Rights Reserved.</p>
-            <p class="small text-white-50 mt-2">Street English Curriculum</p>
+            <p>&copy; 2024 <span class="gold-text">NORTH CASTLE</span> Education Center. <br>All Rights Reserved. Street English Department.</p>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        function checkQuiz() {
-            const form = document.getElementById('quizForm');
-            const results = new FormData(form);
-            let score = 0;
-            let total = 8;
-
-            for (let entry of results.values()) {
-                if (entry === 'correct') {
-                    score++;
+        function checkAnswer(qNum, choice) {
+            const feedback = document.getElementById('feedback' + qNum);
+            
+            // Logic for Question 1
+            if(qNum === 1) {
+                if(choice === 'G') {
+                    feedback.innerHTML = "✅ Correct! That's the Voiced sound.";
+                    feedback.style.color = "#FFD700";
+                } else {
+                    feedback.innerHTML = "❌ Try again! Put your hand on your throat.";
+                    feedback.style.color = "#ff6b6b";
                 }
             }
-
-            const resultDiv = document.getElementById('quizResult');
-            resultDiv.innerHTML = `Your Score: ${score} / ${total}`;
             
-            if(score === total) {
-                resultDiv.style.color = "#FFD700";
-                resultDiv.innerHTML += "<br><small>Excellent! You are a Sound Master!</small>";
-            } else if (score >= 5) {
-                resultDiv.style.color = "#FFFFFF";
-                resultDiv.innerHTML += "<br><small>Good job! Keep practicing!</small>";
-            } else {
-                resultDiv.style.color = "#FF9999";
-                resultDiv.innerHTML += "<br><small>Try again! Review the sounds above.</small>";
+            // Logic for Question 2
+            if(qNum === 2) {
+                if(choice === 'L') {
+                    feedback.innerHTML = "✅ Correct! It says its name: 'A'.";
+                    feedback.style.color = "#FFD700";
+                } else {
+                    feedback.innerHTML = "❌ Wrong! Short vowels sound like 'Ah'.";
+                    feedback.style.color = "#ff6b6b";
+                }
             }
-
-            resultDiv.scrollIntoView({ behavior: 'smooth' });
         }
     </script>
 </body>
