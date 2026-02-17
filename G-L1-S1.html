@@ -1,267 +1,365 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>أسرار الأصوات | Secrets of Sounds</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
-    
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
-    
+    <title>Street English | Lecture 1: Secrets of Sounds</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    
     <style>
         :root {
-            --maroon-bg: #800000;
-            --card-glass: rgba(255, 255, 255, 0.1);
-            --accent-gold: #ffd700;
+            --maroon: #800000;
+            --gold: #FFD700;
+            --white: #FFFFFF;
+            --darker-maroon: #600000;
         }
 
         body {
-            background-color: var(--maroon-bg);
-            color: #ffffff;
-            font-family: 'Cairo', sans-serif;
-            line-height: 1.8;
-            overflow-x: hidden;
+            background-color: var(--maroon);
+            color: var(--white);
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
         }
 
-        /* Hero Section */
-        .hero {
-            padding: 60px 0;
-            text-align: center;
-            background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(128,0,0,1) 100%);
-        }
-
-        .hero h1 {
+        /* Typography */
+        h1, h2, h3 {
             font-weight: 900;
-            font-size: 3rem;
-            margin-bottom: 20px;
-            color: var(--accent-gold);
+            text-transform: uppercase;
+            color: var(--gold);
         }
 
-        /* Cards Styling */
-        .edu-card {
-            background: var(--card-glass);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        .text-gold { color: var(--gold) !important; }
+
+        /* Branding Header */
+        header {
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 3px solid var(--gold);
+            background-color: var(--darker-maroon);
+        }
+
+        .brand-name {
+            font-size: 1.2rem;
+            letter-spacing: 4px;
+            margin-bottom: 5px;
+        }
+
+        /* Cards & Sections */
+        .content-section {
+            padding: 60px 0;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 215, 0, 0.3);
             border-radius: 15px;
             padding: 25px;
-            margin-bottom: 30px;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(5px);
+            height: 100%;
+            transition: transform 0.3s ease;
         }
 
-        .edu-card:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.15);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold);
         }
 
-        .icon-box {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            color: var(--accent-gold);
-        }
-
-        /* Table Styling */
+        /* Tables */
         .table {
-            color: white;
-            border-color: rgba(255, 255, 255, 0.2);
+            color: var(--white);
+            border-color: var(--gold);
         }
 
-        .table thead {
-            background-color: rgba(0,0,0,0.3);
+        .table thead th {
+            color: var(--gold);
+            border-bottom: 2px solid var(--gold);
         }
 
-        /* Mirror Tip Alert */
-        .mirror-tip {
-            border-right: 5px solid var(--accent-gold);
-            background: rgba(255, 215, 0, 0.1);
-            padding: 15px;
-            border-radius: 5px;
-        }
-
-        /* Quiz UI */
-        .quiz-container {
-            background: #ffffff;
-            color: #333;
-            border-radius: 20px;
-            padding: 40px;
-            margin-top: 50px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
-        }
-
-        .question-box {
-            margin-bottom: 25px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .option-btn {
-            display: block;
-            width: 100%;
-            text-align: right;
-            padding: 12px;
-            margin: 8px 0;
-            border: 2px solid #800000;
-            background: none;
-            border-radius: 10px;
-            transition: 0.2s;
-            font-weight: 600;
-        }
-
-        .option-btn:hover {
-            background: #800000;
-            color: white;
-        }
-
-        .royal-badge {
-            background: var(--accent-gold);
-            color: #800000;
-            padding: 10px 20px;
+        /* Buttons */
+        .btn-gold {
+            background-color: var(--gold);
+            color: var(--maroon);
+            font-weight: 700;
+            border: none;
+            padding: 12px 30px;
             border-radius: 50px;
-            font-weight: bold;
-            display: inline-block;
-            margin-top: 20px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .btn-gold:hover {
+            background-color: var(--white);
+            color: var(--maroon);
+            transform: scale(1.05);
+        }
+
+        /* Quiz Styles */
+        .quiz-option {
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--white);
+            margin-bottom: 10px;
+            text-align: left;
+            transition: 0.2s;
+        }
+
+        .quiz-option:hover, .quiz-option.active {
+            background-color: var(--gold);
+            color: var(--maroon);
         }
 
         footer {
+            background-color: var(--darker-maroon);
+            padding: 30px;
             text-align: center;
-            padding: 40px;
-            opacity: 0.7;
+            border-top: 1px solid var(--gold);
+            margin-top: 50px;
         }
 
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2rem; }
+        .icon-box {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--gold);
         }
     </style>
 </head>
 <body>
 
-    <header class="hero container">
-        <div class="icon-box"><i class="fas fa-crown"></i></div>
-        <h1>أسرار الأصوات | Secrets of Sounds</h1>
-        <p class="lead">الإيقاع الذي يجعلك تتحدث كأنك في شوارع لندن أو نيويورك!</p>
+    <header>
+        <div class="container">
+            <div class="brand-name">NORTH CASTLE</div>
+            <h1 class="display-4">STREET ENGLISH</h1>
+            <p class="lead text-gold mb-0">Lecture 1: Secrets of Sounds (Alphabet & Street Sounds)</p>
+        </div>
     </header>
 
-    <main class="container">
-        
-        <section class="edu-card text-center">
-            <div class="icon-box"><i class="fas fa-comment-slash"></i></div>
-            <h3>لا تخجل.. أنت لا تقرأ، أنت "تغني"!</h3>
-            <p>القاعدة الذهبية: اللغة الإنجليزية تُنطق بالـ <b>Sounds (الأصوات)</b> وليس بأسماء الحروف. انسَ أن هذا اسمه "A"، المهم هو كيف يخرج صوته في الكلمة. اكسر حاجز الخجل، فالصوت الصحيح يبدأ من الثقة.</p>
-        </section>
+    <main class="container my-5">
 
-        <section class="row">
-            <div class="col-12">
-                <div class="edu-card">
-                    <div class="icon-box"><i class="fas fa-wand-magic-sparkles"></i></div>
-                    <h3>قسم "الخداع البصري" (Vowels)</h3>
-                    <p>الحروف المتحركة (A, E, I, O, U) هي "جوكر" اللغة. نفس الحرف قد يغير جلده تماماً!</p>
-                    
-                    <div class="table-responsive">
-                        <table class="table table-bordered text-center align-middle">
-                            <thead>
-                                <tr>
-                                    <th>الحرف</th>
-                                    <th>الصوت القصير (Short)</th>
-                                    <th>مثال</th>
-                                    <th>الصوت الطويل (Long)</th>
-                                    <th>مثال</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="fw-bold text-warning">A</td>
-                                    <td>أ (Fat)</td>
-                                    <td>Apple <i class="fas fa-apple-alt"></i></td>
-                                    <td>إي (Name)</td>
-                                    <td>Ape <i class="fas fa-ghost"></i></td>
-                                </tr>
-                                <tr>
-                                    <td class="fw-bold text-warning">I</td>
-                                    <td>إِ (Thin)</td>
-                                    <td>Ship <i class="fas fa-ship"></i></td>
-                                    <td>آي (Light)</td>
-                                    <td>Ice <i class="fas fa-ice-cream"></i></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+        <section class="content-section text-center">
+            <div class="icon-box">
+                <i class="fa-solid fa-ear-listen"></i>
+            </div>
+            <h2>The Core Rule</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <p class="fs-4">English is a language of <span class="text-gold fw-bold">SOUNDS</span>, not Letters.</p>
+                    <p>In many languages, you say what you see. In English, letters are just "costumes." To speak like a local, you must train your ears to hear the vibrations, not just read the alphabet.</p>
                 </div>
             </div>
         </section>
 
-        <section class="row">
-            <div class="col-md-6">
-                <div class="edu-card h-100">
-                    <div class="icon-box"><i class="fas fa-industry"></i></div>
-                    <h3>مصنع الأصوات</h3>
+        <hr class="border-gold">
+
+        <section class="content-section">
+            <h2 class="text-center mb-5"><i class="fa-solid fa-eye me-3"></i>The Optical Illusion (Vowels)</h2>
+            <div class="table-responsive">
+                <table class="table table-bordered align-middle text-center">
+                    <thead>
+                        <tr>
+                            <th>Vowel</th>
+                            <th>Short Sound (Quick)</th>
+                            <th>Long Sound (Alphabet Name)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="fw-bold text-gold fs-3">A</td>
+                            <td><strong>Apple</strong> /æ/</td>
+                            <td><strong>Ape</strong> /eɪ/</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold text-gold fs-3">E</td>
+                            <td><strong>Bed</strong> /ɛ/</td>
+                            <td><strong>Bee</strong> /i/</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold text-gold fs-3">I</td>
+                            <td><strong>Ship</strong> /ɪ/</td>
+                            <td><strong>Sheet</strong> /i/</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold text-gold fs-3">O</td>
+                            <td><strong>Hot</strong> /ɒ/</td>
+                            <td><strong>Hope</strong> /oʊ/</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold text-gold fs-3">U</td>
+                            <td><strong>Cut</strong> /ʌ/</td>
+                            <td><strong>Cute</strong> /ju/</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="row g-4 align-items-center">
+                <div class="col-md-6">
+                    <h2><i class="fa-solid fa-industry me-3"></i>The Sound Factory</h2>
+                    <p>Your mouth is a machine. Different sounds come from different "stations":</p>
                     <ul class="list-unstyled">
-                        <li><i class="fas fa-check-circle text-warning me-2"></i> <b>أصوات الحلق (Throat):</b> مثل حرف <b>G</b> أو <b>K</b>، اشعر بالاهتزاز هنا!</li>
-                        <li><i class="fas fa-check-circle text-warning me-2"></i> <b>أصوات الشفاه (Lips):</b> مثل حرف <b>P</b> (الذي يخرج معه هواء) وحرف <b>B</b>.</li>
+                        <li class="mb-3"><i class="fa-solid fa-check text-gold me-2"></i> <strong>Throat Sounds (G, K):</strong> Feel the vibration at the back of your tongue.</li>
+                        <li class="mb-3"><i class="fa-solid fa-check text-gold me-2"></i> <strong>Lip Sounds (P, B):</strong> Use air pressure to "pop" the sound.</li>
                     </ul>
-                    <div class="mirror-tip mt-3">
-                        <i class="fas fa-magic me-2"></i> <b>نصيحة الملك:</b> قِف أمام المرآة وراقب حركة شفتيك وعضلات وجهك.. الإنجليزية "رياضة عضلات"!
+                    <div class="p-3 border border-gold rounded">
+                        <p class="mb-0"><i class="fa-solid fa-mirror me-2 text-gold"></i> <strong>Pro Tip:</strong> Stand in front of a <strong>mirror</strong>. If your lips don't move for 'P' and 'B', you aren't saying them right!</p>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-6">
-                <div class="edu-card h-100">
-                    <div class="icon-box"><i class="fas fa-exclamation-triangle"></i></div>
-                    <h3>فخاخ النطق (Minimal Pairs)</h3>
-                    <p>احذر! تغيير صوت واحد قد يغير المعنى من "سفينة" إلى "ملاءة سرير"!</p>
-                    <div class="d-flex justify-content-around text-center">
-                        <div class="p-2 border rounded">
-                            <span class="d-block fw-bold">Sheet</span>
-                            <small>/ʃiːt/</small>
-                        </div>
-                        <div class="p-2 align-self-center"><i class="fas fa-arrows-alt-h"></i></div>
-                        <div class="p-2 border rounded">
-                            <span class="d-block fw-bold">Ship</span>
-                            <small>/ʃɪp/</small>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="d-flex justify-content-around text-center">
-                        <div class="p-2 border rounded">
-                            <span class="d-block fw-bold">P (Air)</span>
-                            <small>Pen</small>
-                        </div>
-                        <div class="p-2 align-self-center"><i class="fas fa-arrows-alt-h"></i></div>
-                        <div class="p-2 border rounded">
-                            <span class="d-block fw-bold">B (Voice)</span>
-                            <small>Ben</small>
-                        </div>
+                <div class="col-md-6">
+                    <div class="glass-card text-center">
+                        <i class="fa-solid fa-vocal-softness icon-box"></i>
+                        <h3>Vibration Check</h3>
+                        <p>Place two fingers on your throat. Say "BZZZZ". Feel that? That is a <strong>Voiced</strong> sound. Now say "SSSSS". No vibration? That is <strong>Unvoiced</strong>.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="quiz-container">
-            <h2 class="text-center mb-4"><i class="fas fa-medal text-danger"></i> الـ Quiz الملكي</h2>
-            <p class="text-center mb-5 text-muted">أجب على 8 أسئلة لتنال اللقب الملكي في النطق!</p>
-
-            <div id="quiz-ui">
-                <div class="question-box">
-                    <p class="fw-bold">1. أي من الكلمات التالية تحتوي على صوت "A" طويل (Long A)؟</p>
-                    <button class="option-btn">Cat</button>
-                    <button class="option-btn">Cake</button>
-                    <button class="option-btn">Bat</button>
-                </div>
-
-                <div class="question-box">
-                    <p class="fw-bold">2. حرف الـ P يسمى صوتاً "شفهياً"، ماذا يجب أن يخرج معه؟</p>
-                    <button class="option-btn">اهتزاز في الحلق</button>
-                    <button class="option-btn">دفعة هواء (Air Puff)</button>
-                    <button class="option-btn">صوت من الأنف</button>
-                </div>
-
-                <div class="text-center">
-                    <p class="text-muted">... تم اختصار باقي الأسئلة للمعالجة البرمجية ...</p>
-                    <div class="royal-badge">
-                        <i class="fas fa-crown"></i> استعد للحصول على "اللقب الملكي"!
+        <section class="content-section">
+            <h2 class="text-center mb-5">Minimal Pairs Challenge</h2>
+            <div class="row g-4">
+                <div class="col-6 col-md-3">
+                    <div class="glass-card text-center">
+                        <span class="d-block text-gold fw-bold">P vs B</span>
+                        <p class="small">Pat / Bat</p>
                     </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="glass-card text-center">
+                        <span class="d-block text-gold fw-bold">I vs EE</span>
+                        <p class="small">Sit / Seat</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="glass-card text-center">
+                        <span class="d-block text-gold fw-bold">S vs SH</span>
+                        <p class="small">Sip / Ship</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="glass-card text-center">
+                        <span class="d-block text-gold fw-bold">F vs V</span>
+                        <p class="small">Fan / Van</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="border-gold">
+
+        <section class="content-section" id="quiz-area">
+            <div class="text-center mb-5">
+                <h2><i class="fa-solid fa-crown me-3"></i>The Royal Quiz</h2>
+                <p>Test your street knowledge below!</p>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <form id="quizForm">
+                        <div class="mb-4">
+                            <p class="fw-bold">1. English is primarily about _____?</p>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q1" value="wrong" id="q1a">
+                                <label class="form-check-label" for="q1a">The way words are spelled</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q1" value="correct" id="q1b">
+                                <label class="form-check-label" for="q1b">The way sounds are produced</label>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <p class="fw-bold">2. Which word has a LONG 'A' sound?</p>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q2" value="wrong" id="q2a">
+                                <label class="form-check-label" for="q2a">Apple</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q2" value="correct" id="q2b">
+                                <label class="form-check-label" for="q2b">Cake</label>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <p class="fw-bold">3. 'P' and 'B' are known as _____ sounds.</p>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q3" value="correct" id="q3a">
+                                <label class="form-check-label" for="q3a">Lip Sounds</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q3" value="wrong" id="q3b">
+                                <label class="form-check-label" for="q3b">Throat Sounds</label>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <p class="fw-bold">4. Which sound requires throat vibration (Voiced)?</p>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q4" value="correct" id="q4a">
+                                <label class="form-check-label" for="q4a">B</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q4" value="wrong" id="q4b">
+                                <label class="form-check-label" for="q4b">P</label>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <p class="fw-bold">5. 'Sheet' vs 'Ship' is an example of _____.</p>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q5" value="correct" id="q5a">
+                                <label class="form-check-label" for="q5a">Minimal Pairs</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q5" value="wrong" id="q5b">
+                                <label class="form-check-label" for="q5b">Maximal Sounds</label>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <p class="fw-bold">6. What should you use to check your mouth movements?</p>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q6" value="wrong" id="q6a">
+                                <label class="form-check-label" for="q6a">A book</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q6" value="correct" id="q6b">
+                                <label class="form-check-label" for="q6b">A mirror</label>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <p class="fw-bold">7. The word 'Cut' uses which vowel sound?</p>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q7" value="correct" id="q7a">
+                                <label class="form-check-label" for="q7a">Short U</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q7" value="wrong" id="q7b">
+                                <label class="form-check-label" for="q7b">Long U</label>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <p class="fw-bold">8. Which of these is a 'Throat Sound'?</p>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q8" value="wrong" id="q8a">
+                                <label class="form-check-label" for="q8a">M</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q8" value="correct" id="q8b">
+                                <label class="form-check-label" for="q8b">G</label>
+                            </div>
+                        </div>
+
+                        <div class="text-center mt-5">
+                            <button type="button" class="btn btn-gold px-5" onclick="checkQuiz()">
+                                <i class="fa-solid fa-crown me-2"></i> Check Results
+                            </button>
+                        </div>
+                    </form>
+                    <div id="quizResult" class="mt-4 text-center fs-3 fw-bold"></div>
                 </div>
             </div>
         </section>
@@ -269,10 +367,44 @@
     </main>
 
     <footer>
-        <p> [North Castle] &copy; 2026</p>
-        <p><small></small></p>
+        <div class="container">
+            <h4 class="text-gold mb-3">NORTH CASTLE</h4>
+            <p class="mb-0">&copy; 2026 North Castle - All Rights Reserved.</p>
+            <p class="small text-white-50 mt-2">Street English Curriculum</p>
+        </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        function checkQuiz() {
+            const form = document.getElementById('quizForm');
+            const results = new FormData(form);
+            let score = 0;
+            let total = 8;
+
+            for (let entry of results.values()) {
+                if (entry === 'correct') {
+                    score++;
+                }
+            }
+
+            const resultDiv = document.getElementById('quizResult');
+            resultDiv.innerHTML = `Your Score: ${score} / ${total}`;
+            
+            if(score === total) {
+                resultDiv.style.color = "#FFD700";
+                resultDiv.innerHTML += "<br><small>Excellent! You are a Sound Master!</small>";
+            } else if (score >= 5) {
+                resultDiv.style.color = "#FFFFFF";
+                resultDiv.innerHTML += "<br><small>Good job! Keep practicing!</small>";
+            } else {
+                resultDiv.style.color = "#FF9999";
+                resultDiv.innerHTML += "<br><small>Try again! Review the sounds above.</small>";
+            }
+
+            resultDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
 </body>
 </html>
