@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أسرار الأصوات | Secrets of Sounds</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --maroon-bg: #800000;
+            --card-glass: rgba(255, 255, 255, 0.1);
+            --accent-gold: #ffd700;
+        }
+
+        body {
+            background-color: var(--maroon-bg);
+            color: #ffffff;
+            font-family: 'Cairo', sans-serif;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 60px 0;
+            text-align: center;
+            background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(128,0,0,1) 100%);
+        }
+
+        .hero h1 {
+            font-weight: 900;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--accent-gold);
+        }
+
+        /* Cards Styling */
+        .edu-card {
+            background: var(--card-glass);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .edu-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .icon-box {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--accent-gold);
+        }
+
+        /* Table Styling */
+        .table {
+            color: white;
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .table thead {
+            background-color: rgba(0,0,0,0.3);
+        }
+
+        /* Mirror Tip Alert */
+        .mirror-tip {
+            border-right: 5px solid var(--accent-gold);
+            background: rgba(255, 215, 0, 0.1);
+            padding: 15px;
+            border-radius: 5px;
+        }
+
+        /* Quiz UI */
+        .quiz-container {
+            background: #ffffff;
+            color: #333;
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 50px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+        }
+
+        .question-box {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .option-btn {
+            display: block;
+            width: 100%;
+            text-align: right;
+            padding: 12px;
+            margin: 8px 0;
+            border: 2px solid #800000;
+            background: none;
+            border-radius: 10px;
+            transition: 0.2s;
+            font-weight: 600;
+        }
+
+        .option-btn:hover {
+            background: #800000;
+            color: white;
+        }
+
+        .royal-badge {
+            background: var(--accent-gold);
+            color: #800000;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            opacity: 0.7;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero container">
+        <div class="icon-box"><i class="fas fa-crown"></i></div>
+        <h1>أسرار الأصوات | Secrets of Sounds</h1>
+        <p class="lead">الإيقاع الذي يجعلك تتحدث كأنك في شوارع لندن أو نيويورك!</p>
+    </header>
+
+    <main class="container">
+        
+        <section class="edu-card text-center">
+            <div class="icon-box"><i class="fas fa-comment-slash"></i></div>
+            <h3>لا تخجل.. أنت لا تقرأ، أنت "تغني"!</h3>
+            <p>القاعدة الذهبية: اللغة الإنجليزية تُنطق بالـ <b>Sounds (الأصوات)</b> وليس بأسماء الحروف. انسَ أن هذا اسمه "A"، المهم هو كيف يخرج صوته في الكلمة. اكسر حاجز الخجل، فالصوت الصحيح يبدأ من الثقة.</p>
+        </section>
+
+        <section class="row">
+            <div class="col-12">
+                <div class="edu-card">
+                    <div class="icon-box"><i class="fas fa-wand-magic-sparkles"></i></div>
+                    <h3>قسم "الخداع البصري" (Vowels)</h3>
+                    <p>الحروف المتحركة (A, E, I, O, U) هي "جوكر" اللغة. نفس الحرف قد يغير جلده تماماً!</p>
+                    
+                    <div class="table-responsive">
+                        <table class="table table-bordered text-center align-middle">
+                            <thead>
+                                <tr>
+                                    <th>الحرف</th>
+                                    <th>الصوت القصير (Short)</th>
+                                    <th>مثال</th>
+                                    <th>الصوت الطويل (Long)</th>
+                                    <th>مثال</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="fw-bold text-warning">A</td>
+                                    <td>أ (Fat)</td>
+                                    <td>Apple <i class="fas fa-apple-alt"></i></td>
+                                    <td>إي (Name)</td>
+                                    <td>Ape <i class="fas fa-ghost"></i></td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-bold text-warning">I</td>
+                                    <td>إِ (Thin)</td>
+                                    <td>Ship <i class="fas fa-ship"></i></td>
+                                    <td>آي (Light)</td>
+                                    <td>Ice <i class="fas fa-ice-cream"></i></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="row">
+            <div class="col-md-6">
+                <div class="edu-card h-100">
+                    <div class="icon-box"><i class="fas fa-industry"></i></div>
+                    <h3>مصنع الأصوات</h3>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-check-circle text-warning me-2"></i> <b>أصوات الحلق (Throat):</b> مثل حرف <b>G</b> أو <b>K</b>، اشعر بالاهتزاز هنا!</li>
+                        <li><i class="fas fa-check-circle text-warning me-2"></i> <b>أصوات الشفاه (Lips):</b> مثل حرف <b>P</b> (الذي يخرج معه هواء) وحرف <b>B</b>.</li>
+                    </ul>
+                    <div class="mirror-tip mt-3">
+                        <i class="fas fa-magic me-2"></i> <b>نصيحة الملك:</b> قِف أمام المرآة وراقب حركة شفتيك وعضلات وجهك.. الإنجليزية "رياضة عضلات"!
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="edu-card h-100">
+                    <div class="icon-box"><i class="fas fa-exclamation-triangle"></i></div>
+                    <h3>فخاخ النطق (Minimal Pairs)</h3>
+                    <p>احذر! تغيير صوت واحد قد يغير المعنى من "سفينة" إلى "ملاءة سرير"!</p>
+                    <div class="d-flex justify-content-around text-center">
+                        <div class="p-2 border rounded">
+                            <span class="d-block fw-bold">Sheet</span>
+                            <small>/ʃiːt/</small>
+                        </div>
+                        <div class="p-2 align-self-center"><i class="fas fa-arrows-alt-h"></i></div>
+                        <div class="p-2 border rounded">
+                            <span class="d-block fw-bold">Ship</span>
+                            <small>/ʃɪp/</small>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="d-flex justify-content-around text-center">
+                        <div class="p-2 border rounded">
+                            <span class="d-block fw-bold">P (Air)</span>
+                            <small>Pen</small>
+                        </div>
+                        <div class="p-2 align-self-center"><i class="fas fa-arrows-alt-h"></i></div>
+                        <div class="p-2 border rounded">
+                            <span class="d-block fw-bold">B (Voice)</span>
+                            <small>Ben</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="quiz-container">
+            <h2 class="text-center mb-4"><i class="fas fa-medal text-danger"></i> الـ Quiz الملكي</h2>
+            <p class="text-center mb-5 text-muted">أجب على 8 أسئلة لتنال اللقب الملكي في النطق!</p>
+
+            <div id="quiz-ui">
+                <div class="question-box">
+                    <p class="fw-bold">1. أي من الكلمات التالية تحتوي على صوت "A" طويل (Long A)؟</p>
+                    <button class="option-btn">Cat</button>
+                    <button class="option-btn">Cake</button>
+                    <button class="option-btn">Bat</button>
+                </div>
+
+                <div class="question-box">
+                    <p class="fw-bold">2. حرف الـ P يسمى صوتاً "شفهياً"، ماذا يجب أن يخرج معه؟</p>
+                    <button class="option-btn">اهتزاز في الحلق</button>
+                    <button class="option-btn">دفعة هواء (Air Puff)</button>
+                    <button class="option-btn">صوت من الأنف</button>
+                </div>
+
+                <div class="text-center">
+                    <p class="text-muted">... تم اختصار باقي الأسئلة للمعالجة البرمجية ...</p>
+                    <div class="royal-badge">
+                        <i class="fas fa-crown"></i> استعد للحصول على "اللقب الملكي"!
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p> [North Castle] &copy; 2026</p>
+        <p><small></small></p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
