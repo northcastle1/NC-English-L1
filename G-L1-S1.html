@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>North Castle - Lesson 1: Secrets of Sounds</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>North Castle - Lesson 1</title>
     <style>
         :root {
-            --maroon-bg: #600000; /* اللون النبيتي */
+            --maroon-bg: #600000; 
             --dark-accent: #4a0000;
-            --gold-yellow: #FFD700; /* اللون الأصفر للعناوين */
+            --gold-yellow: #FFD700; 
             --white-text: #ffffff;
             --card-bg: rgba(255, 255, 255, 0.1);
         }
@@ -21,7 +20,6 @@
             margin: 0;
             padding: 0;
             line-height: 1.6;
-            direction: ltr;
         }
 
         .container {
@@ -30,7 +28,7 @@
             padding: 20px;
         }
 
-        /* رأس الصفحة - Header */
+        /* رأس الصفحة مع القلعة المدمجة */
         header {
             text-align: center;
             padding: 50px 20px;
@@ -39,13 +37,19 @@
             border-radius: 0 0 50px 50px;
             margin-bottom: 40px;
             box-shadow: 0 15px 30px rgba(0,0,0,0.4);
-            animation: slideIn 1s ease-out;
         }
 
-        h1 { margin: 0; font-size: 3rem; text-transform: uppercase; letter-spacing: 3px; }
+        /* تنسيق أيقونة القلعة الـ SVG */
+        .castle-icon {
+            width: 60px;
+            height: 60px;
+            fill: white;
+            margin-bottom: 10px;
+        }
+
+        h1 { margin: 0; font-size: 2.8rem; text-transform: uppercase; letter-spacing: 2px; }
         .subtitle { color: var(--gold-yellow); font-size: 1.4rem; margin-top: 10px; font-weight: bold; }
 
-        /* الأقسام - Sections */
         section {
             background: var(--card-bg);
             padding: 30px;
@@ -53,25 +57,18 @@
             margin-bottom: 30px;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255,255,255,0.1);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: transform 0.3s ease;
         }
 
-        section:hover {
-            transform: scale(1.02);
-            background: rgba(255, 255, 255, 0.18);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-        }
+        section:hover { transform: translateY(-5px); }
 
         h2 {
             color: var(--gold-yellow);
             border-bottom: 3px solid var(--gold-yellow);
-            display: inline-block;
             padding-bottom: 8px;
             margin-bottom: 25px;
-            font-size: 1.8rem;
         }
 
-        /* الحروف الأبجدية */
         .alphabet-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
@@ -84,13 +81,9 @@
             padding: 12px;
             border-radius: 12px;
             font-weight: bold;
-            font-size: 1.3rem;
-            border: 2px solid var(--gold-yellow);
-            transition: 0.3s;
+            border: 1px solid var(--gold-yellow);
         }
-        .letter-card:hover { background: var(--gold-yellow); color: var(--maroon-bg); cursor: pointer; }
 
-        /* الحروف المتحركة - Vowels */
         .vowel-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -104,35 +97,19 @@
             border-radius: 15px;
         }
 
-        .vowel-letter {
-            font-size: 2.5rem;
-            color: var(--gold-yellow);
-            display: block;
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
+        .sound-type { font-weight: bold; color: #ffeb3b; }
 
-        .sound-type { font-weight: bold; color: #ffeb3b; text-decoration: underline; }
-
-        /* الجدول */
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
             border-radius: 15px;
             overflow: hidden;
         }
 
-        th, td {
-            padding: 18px;
-            text-align: center;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
+        th, td { padding: 15px; text-align: center; border: 1px solid rgba(255,255,255,0.1); }
+        th { background: var(--dark-accent); color: var(--gold-yellow); }
 
-        th { background: var(--dark-accent); color: var(--gold-yellow); font-size: 1.2rem; }
-        td { background: rgba(255,255,255,0.05); font-size: 1.1rem; }
-
-        /* قائمة الكلمات مع الأيقونات - Checklist */
+        /* قائمة الكلمات بالأيقونات */
         .checklist {
             list-style: none;
             padding: 0;
@@ -147,156 +124,56 @@
             border-radius: 15px;
             display: flex;
             align-items: center;
-            font-size: 1.1rem;
             transition: 0.3s;
-            border: 1px solid transparent;
         }
 
-        .checklist li:hover {
-            background: var(--gold-yellow);
-            color: var(--maroon-bg);
-            font-weight: bold;
-            transform: translateX(10px);
-        }
+        .checklist li:hover { background: var(--gold-yellow); color: var(--maroon-bg); font-weight: bold; }
 
-        .checklist li i {
-            margin-right: 15px;
-            font-size: 1.4rem;
-        }
+        .checklist-icon { font-size: 1.5rem; margin-right: 12px; }
 
-        .checklist-icon {
-            font-size: 1.5rem;
-            margin-right: 10px;
-        }
-
-        /* التذييل - Footer */
-        footer {
-            text-align: center;
-            padding: 60px 20px;
-            background: var(--dark-accent);
-            margin-top: 50px;
-            border-radius: 50px 50px 0 0;
-        }
-
-        .footer-logo { font-size: 1.5rem; color: var(--gold-yellow); margin-bottom: 10px; display: block; }
-
-        /* أنيميشن */
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateY(-50px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @media (max-width: 600px) {
-            h1 { font-size: 2rem; }
-            .checklist { grid-template-columns: 1fr 1fr; }
-        }
+        footer { text-align: center; padding: 40px; opacity: 0.8; border-top: 1px solid var(--gold-yellow); margin-top: 40px; }
     </style>
 </head>
 <body>
 
 <div class="container">
     <header>
-        <h1><i class="fas fa-fort-awesome"></i> North Castle</h1>
+        <svg class="castle-icon" viewBox="0 0 512 512">
+            <path d="M496 448H16V416H48V256L32 240V128L80 80V32H112V80L160 32V80L208 32V80L256 32L304 80V32L352 80V32L384 80L432 128V240L416 256V416H448V448H496V480H16V448H48V416H80V256H112V416H144V256H176V416H208V256H240V416H272V256H304V416H336V256H368V416H400V256H432V416H464V448H496V480ZM208 416V320H304V416H208Z"/>
+        </svg>
+        <h1>NORTH CASTLE</h1>
         <div class="subtitle">Street English - Level One</div>
-        <p>Lesson 1: Secrets of Sounds (Alphabet & Phonics)</p>
+        <p>Lesson 1: Secrets of Sounds</p>
     </header>
 
     <section>
-        <h2><i class="fas fa-spell-check"></i> 1. The English Alphabet</h2>
-        <p>English has <strong>26 Letters</strong>. We write them in two ways: <em>Big & Small</em>.</p>
+        <h2>1. The English Alphabet</h2>
         <div class="alphabet-grid">
-            <div class="letter-card">Aa</div> <div class="letter-card">Bb</div> <div class="letter-card">Cc</div>
-            <div class="letter-card">Dd</div> <div class="letter-card">Ee</div> <div class="letter-card">Ff</div>
-            <div class="letter-card">Gg</div> <div class="letter-card">Hh</div> <div class="letter-card">Ii</div>
-            <div class="letter-card">Jj</div> <div class="letter-card">Kk</div> <div class="letter-card">Ll</div>
-            <div class="letter-card">Mm</div> <div class="letter-card">Nn</div> <div class="letter-card">Oo</div>
-            <div class="letter-card">Pp</div> <div class="letter-card">Qq</div> <div class="letter-card">Rr</div>
-            <div class="letter-card">Ss</div> <div class="letter-card">Tt</div> <div class="letter-card">Uu</div>
-            <div class="letter-card">Vv</div> <div class="letter-card">Ww</div> <div class="letter-card">Xx</div>
-            <div class="letter-card">Yy</div> <div class="letter-card">Zz</div>
+            <div class="letter-card">Aa</div> <div class="letter-card">Bb</div> <div class="letter-card">Cc</div> <div class="letter-card">Dd</div>
+            <div class="letter-card">Ee</div> <div class="letter-card">Ff</div> <div class="letter-card">Gg</div> <div class="letter-card">Hh</div>
+            <div class="letter-card">Ii</div> <div class="letter-card">Jj</div> <div class="letter-card">Kk</div> <div class="letter-card">Ll</div>
+            <div class="letter-card">Mm</div> <div class="letter-card">Nn</div> <div class="letter-card">Oo</div> <div class="letter-card">Pp</div>
         </div>
     </section>
 
     <section>
-        <h2><i class="fas fa-hat-wizard"></i> 2. The 5 "Magic" Letters (Vowels)</h2>
-        <p>These letters have two sounds: <strong>Short & Long</strong>.</p>
-        
+        <h2>2. The 5 "Magic" Letters (Vowels)</h2>
         <div class="vowel-container">
             <div class="vowel-card">
-                <span class="vowel-letter">A a 🍎</span>
+                <span style="font-size: 2rem; color: var(--gold-yellow);">A a 🍎</span>
                 <p><span class="sound-type">Short:</span> Apple, Ant, Cat</p>
                 <p><span class="sound-type">Long:</span> Ape, Cake, Name</p>
             </div>
             <div class="vowel-card">
-                <span class="vowel-letter">E e 🥚</span>
+                <span style="font-size: 2rem; color: var(--gold-yellow);">E e 🥚</span>
                 <p><span class="sound-type">Short:</span> Egg, Elephant, Pen</p>
                 <p><span class="sound-type">Long:</span> Eagle, Ear, Tree</p>
             </div>
-            <div class="vowel-card">
-                <span class="vowel-letter">I i 🧊</span>
-                <p><span class="sound-type">Short:</span> Ink, Igloo, Fish</p>
-                <p><span class="sound-type">Long:</span> Ice, Island, Kite</p>
-            </div>
-            <div class="vowel-card">
-                <span class="vowel-letter">O o 🐙</span>
-                <p><span class="sound-type">Short:</span> Octopus, Ox, Dog</p>
-                <p><span class="sound-type">Long:</span> Open, Ocean, Rose</p>
-            </div>
-            <div class="vowel-card">
-                <span class="vowel-letter">U u ☂️</span>
-                <p><span class="sound-type">Short:</span> Umbrella, Up, Sun</p>
-                <p><span class="sound-type">Long:</span> Unicorn, Uniform, Cube</p>
-            </div>
         </div>
     </section>
 
     <section>
-        <h2><i class="fas fa-microphone-alt"></i> 3. Sound Makers (Lips vs. Throat)</h2>
-        <div class="vowel-container">
-            <div class="vowel-card" style="border-left-color: #ff5722;">
-                <h3 style="color: #ff5722;"><i class="fas fa-lips"></i> A. Lip Sounds</h3>
-                <p><strong>P:</strong> Pen 🖊️ - Pizza 🍕</p>
-                <p><strong>B:</strong> Boy 👦 - Book 📖</p>
-                <p><strong>M:</strong> Man 👨 - Moon 🌙</p>
-            </div>
-            <div class="vowel-card" style="border-left-color: #4caf50;">
-                <h3 style="color: #4caf50;"><i class="fas fa-comment-dots"></i> B. Throat Sounds</h3>
-                <p><strong>G:</strong> Go 🟢 - Girl 👧</p>
-                <p><strong>K:</strong> Key 🔑 - King 👑</p>
-                <p><strong>H:</strong> Hat 🎩 - Home 🏠</p>
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <h2><i class="fas fa-random"></i> 4. Tricky Sounds</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Short Sound</th>
-                    <th>Long Sound</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Ship (🚢)</td>
-                    <td>Sheep (🐑)</td>
-                </tr>
-                <tr>
-                    <td>Fit (💪)</td>
-                    <td>Feet (👣)</td>
-                </tr>
-                <tr>
-                    <td>Sit (🪑)</td>
-                    <td>Seat (🛋️)</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-
-    <section>
-        <h2><i class="fas fa-tasks"></i> 5. Lesson Vocabulary Checklist</h2>
-        <p>Words to remember:</p>
+        <h2>5. Lesson Vocabulary Checklist</h2>
         <ul class="checklist">
             <li><span class="checklist-icon">🍎</span> Apple</li>
             <li><span class="checklist-icon">🐜</span> Ant</li>
@@ -312,9 +189,7 @@
     </section>
 
     <footer>
-        <span class="footer-logo">🏰 NORTH CASTLE</span>
-        <p>Building Your Future, One Word at a Time.</p>
-        <p>&copy; 2024 North Castle English Center</p>
+        <p>🏰 <strong>NORTH CASTLE</strong> - Building Your Future</p>
     </footer>
 </div>
 
