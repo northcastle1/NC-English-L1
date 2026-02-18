@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>North Castle - Lesson 1</title>
+    <title>North Castle - Lesson 1: Secrets of Sounds</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --maroon-bg: #600000;
+            --maroon-bg: #600000; /* اللون النبيتي */
             --dark-accent: #4a0000;
-            --gold-yellow: #FFD700;
+            --gold-yellow: #FFD700; /* اللون الأصفر للعناوين */
             --white-text: #ffffff;
             --card-bg: rgba(255, 255, 255, 0.1);
         }
@@ -21,6 +21,7 @@
             margin: 0;
             padding: 0;
             line-height: 1.6;
+            direction: ltr;
         }
 
         .container {
@@ -29,133 +30,165 @@
             padding: 20px;
         }
 
-        /* Header Styling */
+        /* رأس الصفحة - Header */
         header {
             text-align: center;
-            padding: 40px 20px;
-            background: var(--dark-accent);
-            border-bottom: 4px solid var(--gold-yellow);
+            padding: 50px 20px;
+            background: linear-gradient(135deg, var(--dark-accent), var(--maroon-bg));
+            border-bottom: 5px solid var(--gold-yellow);
             border-radius: 0 0 50px 50px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-            animation: fadeInDown 1s ease-out;
+            margin-bottom: 40px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+            animation: slideIn 1s ease-out;
         }
 
-        h1 { margin: 0; font-size: 2.5rem; letter-spacing: 2px; }
-        .subtitle { color: var(--gold-yellow); font-size: 1.2rem; margin-top: 10px; font-weight: bold; }
+        h1 { margin: 0; font-size: 3rem; text-transform: uppercase; letter-spacing: 3px; }
+        .subtitle { color: var(--gold-yellow); font-size: 1.4rem; margin-top: 10px; font-weight: bold; }
 
-        /* Section Styling */
+        /* الأقسام - Sections */
         section {
             background: var(--card-bg);
-            padding: 25px;
-            border-radius: 20px;
-            margin-bottom: 25px;
-            backdrop-filter: blur(5px);
+            padding: 30px;
+            border-radius: 25px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
             border: 1px solid rgba(255,255,255,0.1);
-            transition: transform 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         section:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.15);
+            transform: scale(1.02);
+            background: rgba(255, 255, 255, 0.18);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
         }
 
         h2 {
             color: var(--gold-yellow);
-            border-bottom: 2px solid var(--gold-yellow);
+            border-bottom: 3px solid var(--gold-yellow);
             display: inline-block;
-            padding-bottom: 5px;
-            margin-bottom: 20px;
+            padding-bottom: 8px;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
         }
 
-        /* Alphabet Grid */
+        /* الحروف الأبجدية */
         .alphabet-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-            gap: 10px;
+            grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+            gap: 12px;
             text-align: center;
         }
 
         .letter-card {
-            background: var(--maroon-bg);
-            padding: 10px;
-            border-radius: 10px;
+            background: var(--dark-accent);
+            padding: 12px;
+            border-radius: 12px;
             font-weight: bold;
-            font-size: 1.2rem;
-            border: 1px solid var(--gold-yellow);
+            font-size: 1.3rem;
+            border: 2px solid var(--gold-yellow);
+            transition: 0.3s;
         }
+        .letter-card:hover { background: var(--gold-yellow); color: var(--maroon-bg); cursor: pointer; }
 
-        /* Vowels Styling */
+        /* الحروف المتحركة - Vowels */
         .vowel-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
         }
 
         .vowel-card {
-            background: rgba(0,0,0,0.2);
-            padding: 15px;
-            border-left: 5px solid var(--gold-yellow);
-            border-radius: 10px;
+            background: rgba(0,0,0,0.3);
+            padding: 20px;
+            border-left: 6px solid var(--gold-yellow);
+            border-radius: 15px;
         }
 
         .vowel-letter {
-            font-size: 2rem;
+            font-size: 2.5rem;
             color: var(--gold-yellow);
             display: block;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
         .sound-type { font-weight: bold; color: #ffeb3b; text-decoration: underline; }
 
-        /* Comparison Table */
+        /* الجدول */
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 15px;
+            margin-top: 20px;
+            border-radius: 15px;
+            overflow: hidden;
         }
 
         th, td {
-            padding: 15px;
+            padding: 18px;
             text-align: center;
-            border: 1px solid rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.1);
         }
 
-        th { background: var(--dark-accent); color: var(--gold-yellow); }
+        th { background: var(--dark-accent); color: var(--gold-yellow); font-size: 1.2rem; }
+        td { background: rgba(255,255,255,0.05); font-size: 1.1rem; }
 
-        /* Checklist */
+        /* قائمة الكلمات مع الأيقونات - Checklist */
         .checklist {
             list-style: none;
             padding: 0;
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
         }
 
         .checklist li {
-            padding: 10px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            font-size: 1.1rem;
+            transition: 0.3s;
+            border: 1px solid transparent;
         }
 
-        .checklist li::before {
-            content: "✅ ";
+        .checklist li:hover {
+            background: var(--gold-yellow);
+            color: var(--maroon-bg);
+            font-weight: bold;
+            transform: translateX(10px);
+        }
+
+        .checklist li i {
+            margin-right: 15px;
+            font-size: 1.4rem;
+        }
+
+        .checklist-icon {
+            font-size: 1.5rem;
             margin-right: 10px;
         }
 
+        /* التذييل - Footer */
         footer {
             text-align: center;
-            padding: 40px;
-            font-size: 0.9rem;
-            opacity: 0.8;
+            padding: 60px 20px;
+            background: var(--dark-accent);
+            margin-top: 50px;
+            border-radius: 50px 50px 0 0;
         }
 
-        /* Animations */
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
+        .footer-logo { font-size: 1.5rem; color: var(--gold-yellow); margin-bottom: 10px; display: block; }
+
+        /* أنيميشن */
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-50px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         @media (max-width: 600px) {
-            .checklist { grid-template-columns: 1fr; }
+            h1 { font-size: 2rem; }
+            .checklist { grid-template-columns: 1fr 1fr; }
         }
     </style>
 </head>
@@ -163,15 +196,15 @@
 
 <div class="container">
     <header>
-        <h1>🏰 North Castle</h1>
+        <h1><i class="fas fa-fort-awesome"></i> North Castle</h1>
         <div class="subtitle">Street English - Level One</div>
         <p>Lesson 1: Secrets of Sounds (Alphabet & Phonics)</p>
     </header>
 
     <section>
-        <h2><i class="fas fa-font"></i> 1. The English Alphabet</h2>
+        <h2><i class="fas fa-spell-check"></i> 1. The English Alphabet</h2>
         <p>English has <strong>26 Letters</strong>. We write them in two ways: <em>Big & Small</em>.</p>
-        <div class="alphabet-grid" id="alphabet">
+        <div class="alphabet-grid">
             <div class="letter-card">Aa</div> <div class="letter-card">Bb</div> <div class="letter-card">Cc</div>
             <div class="letter-card">Dd</div> <div class="letter-card">Ee</div> <div class="letter-card">Ff</div>
             <div class="letter-card">Gg</div> <div class="letter-card">Hh</div> <div class="letter-card">Ii</div>
@@ -185,7 +218,7 @@
     </section>
 
     <section>
-        <h2><i class="fas fa-magic"></i> 2. The 5 "Magic" Letters (Vowels)</h2>
+        <h2><i class="fas fa-hat-wizard"></i> 2. The 5 "Magic" Letters (Vowels)</h2>
         <p>These letters have two sounds: <strong>Short & Long</strong>.</p>
         
         <div class="vowel-container">
@@ -218,18 +251,16 @@
     </section>
 
     <section>
-        <h2><i class="fas fa-volume-up"></i> 3. Sound Makers (Lips vs. Throat)</h2>
-        <p><em>Feel the vibration in your neck!</em></p>
-        
+        <h2><i class="fas fa-microphone-alt"></i> 3. Sound Makers (Lips vs. Throat)</h2>
         <div class="vowel-container">
             <div class="vowel-card" style="border-left-color: #ff5722;">
-                <h3 style="color: #ff5722;">👄 A. Lip Sounds</h3>
+                <h3 style="color: #ff5722;"><i class="fas fa-lips"></i> A. Lip Sounds</h3>
                 <p><strong>P:</strong> Pen 🖊️ - Pizza 🍕</p>
                 <p><strong>B:</strong> Boy 👦 - Book 📖</p>
                 <p><strong>M:</strong> Man 👨 - Moon 🌙</p>
             </div>
             <div class="vowel-card" style="border-left-color: #4caf50;">
-                <h3 style="color: #4caf50;">🗣️ B. Throat Sounds</h3>
+                <h3 style="color: #4caf50;"><i class="fas fa-comment-dots"></i> B. Throat Sounds</h3>
                 <p><strong>G:</strong> Go 🟢 - Girl 👧</p>
                 <p><strong>K:</strong> Key 🔑 - King 👑</p>
                 <p><strong>H:</strong> Hat 🎩 - Home 🏠</p>
@@ -238,7 +269,7 @@
     </section>
 
     <section>
-        <h2><i class="fas fa-exclamation-triangle"></i> 4. Tricky Sounds</h2>
+        <h2><i class="fas fa-random"></i> 4. Tricky Sounds</h2>
         <table>
             <thead>
                 <tr>
@@ -264,24 +295,26 @@
     </section>
 
     <section>
-        <h2><i class="fas fa-list-check"></i> 5. Lesson Vocabulary Checklist</h2>
+        <h2><i class="fas fa-tasks"></i> 5. Lesson Vocabulary Checklist</h2>
+        <p>Words to remember:</p>
         <ul class="checklist">
-            <li>Apple</li>
-            <li>Ant</li>
-            <li>Cat</li>
-            <li>Egg</li>
-            <li>Pen</li>
-            <li>Fish</li>
-            <li>Dog</li>
-            <li>Sun</li>
-            <li>Boy</li>
-            <li>Girl</li>
+            <li><span class="checklist-icon">🍎</span> Apple</li>
+            <li><span class="checklist-icon">🐜</span> Ant</li>
+            <li><span class="checklist-icon">🐱</span> Cat</li>
+            <li><span class="checklist-icon">🥚</span> Egg</li>
+            <li><span class="checklist-icon">🖊️</span> Pen</li>
+            <li><span class="checklist-icon">🐟</span> Fish</li>
+            <li><span class="checklist-icon">🐶</span> Dog</li>
+            <li><span class="checklist-icon">☀️</span> Sun</li>
+            <li><span class="checklist-icon">👦</span> Boy</li>
+            <li><span class="checklist-icon">👧</span> Girl</li>
         </ul>
     </section>
 
     <footer>
-        <p>© North Castle</p>
-        <p><em>Building Your Future, One Word at a Time.</em></p>
+        <span class="footer-logo">🏰 NORTH CASTLE</span>
+        <p>Building Your Future, One Word at a Time.</p>
+        <p>&copy; 2024 North Castle English Center</p>
     </footer>
 </div>
 
