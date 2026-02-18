@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>North Castle - Sound Secrets Quiz</title>
+    <title>North Castle - Mega Sound Quiz</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
@@ -21,7 +21,6 @@
             background-color: var(--maroon-bg);
             color: var(--white-text);
             margin: 0;
-            padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -30,63 +29,66 @@
         }
 
         .quiz-container {
-            width: 90%;
-            max-width: 600px;
+            width: 95%;
+            max-width: 700px;
             background: var(--card-bg);
             backdrop-filter: blur(15px);
-            padding: 40px;
+            padding: 30px;
             border-radius: 30px;
             border: 2px solid var(--gold-yellow);
             box-shadow: 0 20px 50px rgba(0,0,0,0.5);
             text-align: center;
+            margin: 20px;
         }
 
         header h1 {
             color: var(--gold-yellow);
-            font-size: 2rem;
-            margin-bottom: 10px;
+            font-size: 1.8rem;
+            margin-bottom: 5px;
             text-transform: uppercase;
         }
 
-        /* Progress Bar */
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: var(--gold-yellow);
+        }
+
         .progress-container {
             width: 100%;
-            height: 10px;
+            height: 12px;
             background: rgba(255,255,255,0.1);
             border-radius: 10px;
             margin-bottom: 30px;
             overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.2);
         }
 
         #progress-bar {
-            width: 20%;
+            width: 0%;
             height: 100%;
-            background: var(--gold-yellow);
-            transition: 0.5s;
+            background: linear-gradient(90deg, var(--gold-yellow), #fff);
+            transition: 0.4s;
         }
 
-        /* Steps */
-        .step {
-            display: none;
+        .question-box {
             animation: fadeIn 0.5s ease-in-out;
         }
 
-        .step.active {
+        .question-icon {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
             display: block;
         }
 
-        .question-icon {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            color: var(--gold-yellow);
-        }
+        h2 { font-size: 1.4rem; margin-bottom: 25px; line-height: 1.4; }
 
-        h2 { font-size: 1.5rem; margin-bottom: 25px; }
-
-        /* Options */
         .options {
             display: grid;
-            gap: 15px;
+            grid-template-columns: 1fr;
+            gap: 12px;
         }
 
         .option-btn {
@@ -95,50 +97,45 @@
             padding: 15px;
             border-radius: 15px;
             color: white;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             cursor: pointer;
             transition: 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
+            text-align: center;
         }
 
         .option-btn:hover {
-            background: rgba(255, 215, 0, 0.2);
+            background: rgba(255, 215, 0, 0.15);
             border-color: var(--gold-yellow);
+            transform: translateY(-2px);
         }
 
-        .option-btn.correct {
-            background: var(--success) !important;
-            border-color: white;
-        }
+        .option-btn.correct { background: var(--success) !important; border-color: white; }
+        .option-btn.wrong { background: var(--error) !important; border-color: white; }
 
-        .option-btn.wrong {
-            background: var(--error) !important;
-            border-color: white;
-        }
-
-        /* Result Screen */
-        #result-screen {
-            display: none;
-        }
+        #result-screen { display: none; }
 
         .restart-btn {
-            margin-top: 20px;
+            margin-top: 25px;
             background: var(--gold-yellow);
             color: var(--maroon-bg);
             border: none;
-            padding: 15px 30px;
+            padding: 15px 40px;
             font-weight: bold;
             border-radius: 50px;
             cursor: pointer;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
+            transition: 0.3s;
         }
 
+        .restart-btn:hover { transform: scale(1.05); box-shadow: 0 5px 15px rgba(255,215,0,0.4); }
+
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @media (min-width: 600px) {
+            .options { grid-template-columns: 1fr 1fr; }
         }
     </style>
 </head>
@@ -146,136 +143,156 @@
 
 <div class="quiz-container">
     <header>
-        <h1><i class="fas fa-fort-awesome"></i> Sound Quiz</h1>
+        <h1><i class="fas fa-fort-awesome"></i> North Castle Quiz</h1>
+        <div class="progress-info">
+            <span id="question-number">Question 1/25</span>
+            <span id="current-score">Score: 0</span>
+        </div>
         <div class="progress-container">
             <div id="progress-bar"></div>
         </div>
     </header>
 
     <div id="quiz-content">
-        <div class="step active" data-step="1">
-            <div class="question-icon">🔢</div>
-            <h2>How many letters are in the English Alphabet?</h2>
-            <div class="options">
-                <button class="option-btn" onclick="checkAnswer(this, false)">20 Letters</button>
-                <button class="option-btn" onclick="checkAnswer(this, true)">26 Letters</button>
-                <button class="option-btn" onclick="checkAnswer(this, false)">30 Letters</button>
-            </div>
-        </div>
-
-        <div class="step" data-step="2">
-            <div class="question-icon">🪄</div>
-            <h2>Which one is a "Magic Letter" (Vowel)?</h2>
-            <div class="options">
-                <button class="option-btn" onclick="checkAnswer(this, false)">B <i class="fas fa-book"></i></button>
-                <button class="option-btn" onclick="checkAnswer(this, true)">E <i class="fas fa-egg"></i></button>
-                <button class="option-btn" onclick="checkAnswer(this, false)">K <i class="fas fa-key"></i></button>
-            </div>
-        </div>
-
-        <div class="step" data-step="3">
-            <div class="question-icon">👄</div>
-            <h2>Which word starts with a "Lip Sound"?</h2>
-            <div class="options">
-                <button class="option-btn" onclick="checkAnswer(this, true)">Pizza 🍕</button>
-                <button class="option-btn" onclick="checkAnswer(this, false)">Girl 👧</button>
-                <button class="option-btn" onclick="checkAnswer(this, false)">Hat 🎩</button>
-            </div>
-        </div>
-
-        <div class="step" data-step="4">
-            <div class="question-icon">📏</div>
-            <h2>Which one has a "LONG" sound?</h2>
-            <div class="options">
-                <button class="option-btn" onclick="checkAnswer(this, false)">Ship 🚢 (Short)</button>
-                <button class="option-btn" onclick="checkAnswer(this, true)">Sheep 🐑 (Long)</button>
-            </div>
-        </div>
-
-        <div class="step" data-step="5">
-            <div class="question-icon">☀️</div>
-            <h2>Look at the icon. What is this?</h2>
-            <div class="options">
-                <button class="option-btn" onclick="checkAnswer(this, false)">Cat 🐱</button>
-                <button class="option-btn" onclick="checkAnswer(this, true)">Sun ☀️</button>
-                <button class="option-btn" onclick="checkAnswer(this, false)">Ant 🐜</button>
-            </div>
+        <div id="question-box" class="question-box">
+            <span class="question-icon" id="q-icon">🍎</span>
+            <h2 id="q-text">Loading question...</h2>
+            <div class="options" id="q-options">
+                </div>
         </div>
     </div>
 
     <div id="result-screen">
-        <div class="question-icon" id="result-icon">🏆</div>
-        <h2 id="score-text">Your Score: 0/5</h2>
-        <p id="feedback-text">Excellent Work!</p>
-        <button class="restart-btn" onclick="location.reload()">Try Again <i class="fas fa-redo"></i></button>
+        <span class="question-icon" id="res-icon">🏆</span>
+        <h2 id="res-score-text">Final Score: 0/25</h2>
+        <p id="res-feedback" style="font-size: 1.2rem;"></p>
+        <button class="restart-btn" onclick="location.reload()">Restart Quiz <i class="fas fa-redo"></i></button>
     </div>
 </div>
 
 <script>
-    let currentStep = 1;
+    // 25 Questions Bank
+    const questionsBank = [
+        { q: "How many letters are in the English alphabet?", icon: "🔤", options: ["26", "24", "30", "22"], correct: "26" },
+        { q: "Which of these is a 'Vowel'?", icon: "🪄", options: ["A", "B", "C", "D"], correct: "A" },
+        { q: "Which word has a SHORT 'A' sound?", icon: "🍎", options: ["Apple", "Cake", "Name", "Ape"], correct: "Apple" },
+        { q: "Which word has a LONG 'A' sound?", icon: "🎂", options: ["Cake", "Ant", "Cat", "Map"], correct: "Cake" },
+        { q: "Is the letter 'E' a vowel or a consonant?", icon: "🥚", options: ["Vowel", "Consonant"], correct: "Vowel" },
+        { q: "Which word has a SHORT 'E' sound?", icon: "🖊️", options: ["Pen", "Tree", "Eagle", "Ear"], correct: "Pen" },
+        { q: "Which word has a LONG 'E' sound?", icon: "🌳", options: ["Tree", "Egg", "Ten", "Bed"], correct: "Tree" },
+        { q: "Which of these is NOT a vowel?", icon: "🚫", options: ["M", "I", "O", "U"], correct: "M" },
+        { q: "Which word has a SHORT 'I' sound?", icon: "🐟", options: ["Fish", "Ice", "Kite", "Island"], correct: "Fish" },
+        { q: "Which word has a LONG 'I' sound?", icon: "🧊", options: ["Ice", "Ink", "Igloo", "Sit"], correct: "Ice" },
+        { q: "Which word has a SHORT 'O' sound?", icon: "🐕", options: ["Dog", "Rose", "Open", "Ocean"], correct: "Dog" },
+        { q: "Which word has a LONG 'O' sound?", icon: "🌹", options: ["Rose", "Ox", "Octopus", "Hot"], correct: "Rose" },
+        { q: "Which word has a SHORT 'U' sound?", icon: "☀️", options: ["Sun", "Unicorn", "Uniform", "Cube"], correct: "Sun" },
+        { q: "Which word has a LONG 'U' sound?", icon: "🦄", options: ["Unicorn", "Up", "Umbrella", "Cup"], correct: "Unicorn" },
+        { q: "Which sound is a 'Lip Sound' (using lips)?", icon: "👄", options: ["P", "K", "G", "H"], correct: "P" },
+        { q: "Which sound is a 'Throat Sound' (from the throat)?", icon: "🗣️", options: ["G", "B", "M", "P"], correct: "G" },
+        { q: "The letter 'B' is a...", icon: "👦", options: ["Lip Sound", "Throat Sound"], correct: "Lip Sound" },
+        { q: "The letter 'K' is a...", icon: "🔑", options: ["Throat Sound", "Lip Sound"], correct: "Throat Sound" },
+        { q: "Which word is the LONG version of 'Ship'?", icon: "🚢", options: ["Sheep", "Shop", "Shape", "Sharp"], correct: "Sheep" },
+        { q: "Which word is the LONG version of 'Fit'?", icon: "💪", options: ["Feet", "Fat", "Foot", "Fight"], correct: "Feet" },
+        { q: "Which word is the LONG version of 'Sit'?", icon: "🪑", options: ["Seat", "Set", "Sat", "Site"], correct: "Seat" },
+        { q: "How many Vowels (Magic Letters) are there?", icon: "🖐️", options: ["5", "7", "3", "10"], correct: "5" },
+        { q: "Which letter is used to say 'Pizza'?", icon: "🍕", options: ["P", "B", "M", "D"], correct: "P" },
+        { q: "Which letter is used to say 'Girl'?", icon: "👧", options: ["G", "K", "H", "L"], correct: "G" },
+        { q: "We write letters in two ways: Small and...", icon: "✍️", options: ["Big", "Tall", "Long", "Huge"], correct: "Big" }
+    ];
+
+    let currentQuestionIndex = 0;
     let score = 0;
-    const totalSteps = 5;
+    let shuffledQuestions = [];
 
-    function checkAnswer(btn, isCorrect) {
-        // Prevent multiple clicks
-        const currentOptions = btn.parentElement.querySelectorAll('.option-btn');
-        currentOptions.forEach(opt => opt.style.pointerEvents = 'none');
+    // Shuffle Function
+    function shuffle(array) {
+        return array.sort(() => Math.random() - 0.5);
+    }
 
-        if (isCorrect) {
+    function startQuiz() {
+        shuffledQuestions = shuffle([...questionsBank]);
+        currentQuestionIndex = 0;
+        score = 0;
+        showQuestion();
+    }
+
+    function showQuestion() {
+        const qData = shuffledQuestions[currentQuestionIndex];
+        
+        // Update Progress
+        document.getElementById('question-number').innerText = `Question ${currentQuestionIndex + 1}/25`;
+        document.getElementById('progress-bar').style.width = ((currentQuestionIndex + 1) / 25 * 100) + '%';
+        document.getElementById('current-score').innerText = `Score: ${score}`;
+
+        // Set Content
+        document.getElementById('q-icon').innerText = qData.icon;
+        document.getElementById('q-text').innerText = qData.q;
+        
+        const optionsContainer = document.getElementById('q-options');
+        optionsContainer.innerHTML = '';
+
+        // Shuffle Options
+        const shuffledOptions = shuffle([...qData.options]);
+
+        shuffledOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'option-btn';
+            btn.innerText = opt;
+            btn.onclick = () => checkAnswer(btn, opt, qData.correct);
+            optionsContainer.appendChild(btn);
+        });
+    }
+
+    function checkAnswer(btn, selected, correct) {
+        const allBtns = document.querySelectorAll('.option-btn');
+        allBtns.forEach(b => b.style.pointerEvents = 'none');
+
+        if (selected === correct) {
             btn.classList.add('correct');
             score++;
         } else {
             btn.classList.add('wrong');
-            // Show the correct answer
-            currentOptions.forEach(opt => {
-                if(opt.innerText.includes('26') || opt.innerText.includes('E ') || opt.innerText.includes('Pizza') || opt.innerText.includes('Sheep') || opt.innerText.includes('Sun')) {
-                    opt.classList.add('correct');
-                }
+            allBtns.forEach(b => {
+                if(b.innerText === correct) b.classList.add('correct');
             });
         }
 
         setTimeout(() => {
-            nextStep();
-        }, 1500);
-    }
-
-    function nextStep() {
-        const currentStepEl = document.querySelector(`.step[data-step="${currentStep}"]`);
-        currentStepEl.classList.remove('active');
-
-        currentStep++;
-
-        if (currentStep <= totalSteps) {
-            const nextStepEl = document.querySelector(`.step[data-step="${currentStep}"]`);
-            nextStepEl.classList.add('active');
-            document.getElementById('progress-bar').style.width = (currentStep / totalSteps * 100) + '%';
-        } else {
-            showResult();
-        }
+            currentQuestionIndex++;
+            if (currentQuestionIndex < shuffledQuestions.length) {
+                showQuestion();
+            } else {
+                showResult();
+            }
+        }, 1200);
     }
 
     function showResult() {
         document.getElementById('quiz-content').style.display = 'none';
-        document.getElementById('progress-bar').parentElement.style.display = 'none';
-        const resultScreen = document.getElementById('result-screen');
-        resultScreen.style.display = 'block';
+        document.getElementById('result-screen').style.display = 'block';
+        document.getElementById('res-score-text').innerText = `Final Score: ${score}/25`;
         
-        document.getElementById('score-text').innerText = `Your Score: ${score}/${totalSteps}`;
-        
-        const resultIcon = document.getElementById('result-icon');
-        const feedback = document.getElementById('feedback-text');
+        const resIcon = document.getElementById('res-icon');
+        const feedback = document.getElementById('res-feedback');
+        const percentage = (score / 25) * 100;
 
-        if(score === 5) {
-            resultIcon.innerText = "👑";
-            feedback.innerText = "Perfect! You are a Sound Master!";
-        } else if(score >= 3) {
-            resultIcon.innerText = "🌟";
-            feedback.innerText = "Great Job! Keep practicing.";
+        if (percentage === 100) {
+            resIcon.innerText = "👑";
+            feedback.innerText = "Legendary! You are a Sound Master.";
+        } else if (percentage >= 80) {
+            resIcon.innerText = "🌟";
+            feedback.innerText = "Excellent! Your English is getting stronger.";
+        } else if (percentage >= 50) {
+            resIcon.innerText = "👍";
+            feedback.innerText = "Good job! Keep practicing to be perfect.";
         } else {
-            resultIcon.innerText = "📚";
-            feedback.innerText = "Nice try! Review Lesson 1 again.";
+            resIcon.innerText = "📚";
+            feedback.innerText = "Don't give up! Review the lesson and try again.";
         }
     }
+
+    // Initialize
+    startQuiz();
 </script>
 
 </body>
